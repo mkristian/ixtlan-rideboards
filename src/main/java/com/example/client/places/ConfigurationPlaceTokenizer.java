@@ -1,0 +1,10 @@
+package com.example.client.places;
+
+import de.mkristian.gwt.rails.places.RestfulPlaceTokenizer;
+
+public class ConfigurationPlaceTokenizer extends RestfulPlaceTokenizer<ConfigurationPlace> {
+    
+    public ConfigurationPlace getPlace(String token) {
+        return new ConfigurationPlace(toSingletonToken(token).action);
+    }
+}
