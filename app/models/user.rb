@@ -1,10 +1,18 @@
-class User < ActiveRecord::Base
+class User
 
+  include DataMapper::Resource
+
+  property :id, Serial, :auto_validation => false
+  
+  property :login, String, :required => true, :unique => true, :length => 32
+  property :name, String, :required => true, :length => 128
+  property :updated_at, DateTime, :required => true
+  
   attr_accessor :groups, :applications
 
-  validates :login, :presence => true
-
-  record_timestamps = false
+  # do not record timestamps since they are set from outside
+  def set_timestamps_on_save
+  end
 
   def self.authenticate(login, password)
     result = User.new
@@ -13,9 +21,14 @@ class User < ActiveRecord::Base
     elsif login.blank?
       result.log = "no login given"
     elsif password == "behappy"
-      result.login = login
-      result.name = login.humanize
-      result.id = 0
+      if u = User.get!(1)
+        result = u
+      else
+        result.login = login
+        result.name = login.humanize
+        result.id = 1
+        result.updated_at = DateTime.now
+      end
       result.groups = [Group.new('name' => login)]
       result.applications = []
     else
@@ -43,14 +56,6 @@ class User < ActiveRecord::Base
       @log
     else
       "User(#{id ? (id.to_s + ':') : ''}#{login})"
-    end
-  end
-
-  unless respond_to? :old_as_json
-    alias :old_as_json :as_json
-    def as_json(options = nil)
-      options = { :methods => [ :applications ] } unless options
-      old_as_json(options)
     end
   end
 

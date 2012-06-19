@@ -1,69 +1,67 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.0.15'
+RAILS_VERSION = '~> 3.0.15'
+DM_VERSION    = '~> 1.2.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'activesupport',  RAILS_VERSION, :require => 'active_support'
+gem 'actionpack',     RAILS_VERSION, :require => 'action_pack'
+gem 'actionmailer',   RAILS_VERSION, :require => 'action_mailer'
+gem 'activeresource', RAILS_VERSION, :require => 'active_resource'
+gem 'railties',       RAILS_VERSION, :require => 'rails'
+gem 'tzinfo',         '~> 0.3.32'
 
-platforms :ruby do
-  gem 'sqlite3'
-end
+gem 'dm-rails',               '~> 1.2.1'
+gem 'dm-sqlite-adapter', DM_VERSION
 
-platforms :jruby do
-  gem 'activerecord-jdbc-adapter'
+# You can use any of the other available database adapters.
+# This is only a small excerpt of the list of all available adapters
+# Have a look at
+#
+#  http://wiki.github.com/datamapper/dm-core/adapters
+#  http://wiki.github.com/datamapper/dm-core/community-plugins
+#
+# for a rather complete list of available datamapper adapters and plugins
 
-  # As rails --database switch does not support derby, hsqldb, h2 nor mssql
-  # as valid values, if you are not using SQLite, comment out the SQLite gem
-  # below and uncomment the gem declaration for the adapter you are using.
-  # If you are using oracle, db2, sybase, informix or prefer to use the plain
-  # JDBC adapter, comment out all the adapter gems below.
+# gem 'dm-sqlite-adapter',    DM_VERSION
+# gem 'dm-mysql-adapter',     DM_VERSION
+# gem 'dm-postgres-adapter',  DM_VERSION
+# gem 'dm-oracle-adapter',    DM_VERSION
+# gem 'dm-sqlserver-adapter', DM_VERSION
 
-  # SQLite JDBC adapter
-  gem 'jdbc-sqlite3', :require => false
+gem 'dm-migrations',   DM_VERSION
+gem 'dm-types',        DM_VERSION
+gem 'dm-validations',  DM_VERSION
+gem 'dm-constraints',  DM_VERSION
+gem 'dm-transactions', DM_VERSION
+gem 'dm-aggregates',   DM_VERSION
+gem 'dm-timestamps',   DM_VERSION
+gem 'dm-observer',     DM_VERSION
 
-  # Derby JDBC adapter
-  #gem 'activerecord-jdbcderby-adapter'
-
-  # HSQL JDBC adapter
-  #gem 'activerecord-jdbchsqldb-adapter'
-
-  # H2 JDBC adapter
-  #gem 'activerecord-jdbch2-adapter'
-
-  # SQL Server JDBC adapter
-  #gem 'activerecord-jdbcmssql-adapter'
-
-end
-
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.1'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+# gem 'unicorn', '~> 4.2.1'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+# gem 'capistrano', '~> 2.11.2'
 
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# To use debugger
+# gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+group :test do
+  # Pretty printed test output
+  gem 'turn', '~> 0.9.4', :require => false
+end
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
 gem "resty-generators"
-gem "ruby-maven", '= 3.0.3.0.28.5', :group => :development
-gem "ixtlan-core"
+gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
+gem "ixtlan-core", :path => '../../ixtlan/ixtlan-core'
 gem "ixtlan-session-timeout"
 gem "ixtlan-guard"
 gem "jruby-openssl", "~> 0.7.4", :platforms => :jruby
 gem "enforce-ssl"
 gem "ixtlan-error-handler", "~> 0.2.0"
 gem "ixtlan-audit", "~> 0.2.0"
+
+gem 'vellam', :path => '../../datamapper/vellam'

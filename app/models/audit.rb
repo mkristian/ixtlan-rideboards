@@ -1,13 +1,12 @@
-class Audit < ActiveRecord::Base
+class Audit
 
-  def self.options
-    {
-      :except => [:created_at, :updated_at]
-    }
-  end
+  include DataMapper::Resource
 
-  def self.single_options
-    {
-    }
-  end
+  property :id, Serial
+
+  property :login, String, :required => true, :length => 32
+  property :message, String, :required => true, :length => 255, :format => /^[^<>]*$/
+
+  timestamps :at
+
 end

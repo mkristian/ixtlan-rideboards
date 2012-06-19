@@ -1,6 +1,14 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+# Comment out the frameworks you don't want (if you don't want ActionMailer,
+# make sure to comment out the `config.action_mailer` lines in your
+# config/environments/development.rb and config/environments/test.rb files):
+require 'action_controller/railtie'
+require 'dm-rails/railtie'
+require 'action_mailer/railtie'
+require 'active_resource/railtie'
+require 'rails/test_unit/railtie'
+
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,6 +22,7 @@ module Rideboard
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/app/serializers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

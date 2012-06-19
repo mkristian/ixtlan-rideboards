@@ -24,6 +24,14 @@ plugin('org.codehaus.mojo:gwt-maven-plugin', GWT_VERSION) do |gwt|
   gwt.executions.goals << ["clean", "compile", "test"]
 end
 plugin(:rails3).in_phase("initialize").execute_goal(:pom).with :force => true
+plugin(:clean, '2.5') do |c|
+  c.with({:filesets => Maven::Model::NamedArray.new(:fileset) do |l|
+              l << { :directory => "public/WEB-INF/classes" }
+              l << { :directory => "public/WEB-INF/deploy" }
+              l << { :directory => "public/WEB-INF/lib" }
+          end
+        })
+end
 
 #-- Macs need the -d32 -XstartOnFirstThread jvm options -->
 profile("mac") do |mac|
@@ -37,5 +45,8 @@ end
 #  snapshot.releases(:enabled => false)
 #  snapshot.snapshots(:enabled => true)
 #end
+
+# latest version has bug with PUT + DELETE request
+jar 'org.jruby.rack:jruby-rack', '1.0.10'
 
 # vim: syntax=Ruby
