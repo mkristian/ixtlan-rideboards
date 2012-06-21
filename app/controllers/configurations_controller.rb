@@ -14,7 +14,7 @@ class ConfigurationsController < ApplicationController
   # GET /configurations.xml
   # GET /configurations.json
   def show
-    @configuration = serializer(Configuration.instance)
+    @configuration = serializer(::Configuration.instance)
 
     respond_with(@configuration)
   end
@@ -23,8 +23,8 @@ class ConfigurationsController < ApplicationController
   # PUT /configurations.xml
   # PUT /configurations.json
   def update
-    if @configuration = serializer(Configuration.optimistic_get(filter.updated_at, 
-                                                                Configuration.instance.id))
+    if @configuration = serializer(::Configuration.optimistic_get(filter.updated_at, 
+                                                                  ::Configuration.instance.id))
 
       @configuration.attributes = filter.params
       @configuration.modified_by = current_user if @configuration.dirty?
