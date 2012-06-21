@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-RAILS_VERSION = '~> 3.0.15'
+RAILS_VERSION = '~> 3.2.5'
 DM_VERSION    = '~> 1.2.0'
 
 gem 'activesupport',  RAILS_VERSION, :require => 'active_support'
@@ -54,7 +54,7 @@ group :test do
   gem 'turn', '~> 0.9.4', :require => false
 end
 
-gem "resty-generators"
+gem "resty-generators", :path => '../../rails-resty-gwt/resty-generators'
 gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
 gem "ixtlan-core", :path => '../../ixtlan/ixtlan-core'
 gem "ixtlan-session-timeout"
