@@ -1,0 +1,53 @@
+  <p class="title" align="center">Add Contact Info to Ride <%= ("Offer" if @listing.driver) || "Request" %> Board:<br/> '<%= @listing.board.fullname %>'</p>
+    <fieldset>
+    <div id="center_form">
+
+    <% if @listing.errors.size == 0 %>
+      <h3 align="center">Please fill in the following fields:</h3>
+      <% else %>
+      <% @listing.errors.each do |msg| %>
+	<h4 style="color:red;"><%= msg %></h3>
+      <% end
+    end %>
+
+      <%= form_for(:listing, :url => listings_url(@lang, @listing.board.venue.name, @listing.board.name)) do |f| %>
+       <table>
+<tr>
+<td><b><%= "First/Given name" %>:</b></td>
+<td><%= f.hidden_field :driver %><%= display(f.text_field(:name, :size => 32, :maxlength => 32), :name) %></td>
+</tr>
+
+<tr>
+<td><b><%= "Email" %>:</b></td>
+<td><%= display(f.text_field(:email, :size => 32, :maxlength => 32), :email) %></td>
+</tr>
+
+<tr>
+<td width="40%"><b><%= "Location" %>:</b>
+(<%= "To protect your privacy," %>
+<%= "please do not post your full address." %>)</td>
+<td valign="top"><%= display(f.text_field(:location, :size => 32, :maxlength => 64), :location) %></td>
+</tr>
+
+<tr>  
+<td><b><%= "Ride date" %>:</b></td>
+<td><%= display(f.date_select(:ridedate, :start_year => Time.now.year, :end_year => Time.now.year + 1), :ridedate) %></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>
+        <% if @listing.driver %>
+          <%= submit_tag "Offer Ride"%>
+        <% else %>
+          <%= submit_tag "Request Ride"%>
+        <% end %>
+</td>
+</tr>
+</table>
+      <% end %>
+      </div>
+    </fieldset>
+</p>
+    <p>
+    <a href="<%= ".." %>">Return to rideboard</a>
+    </p>

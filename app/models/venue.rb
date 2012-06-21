@@ -5,7 +5,7 @@ class Venue
   property :fullname, String, :required => true, :format => /^[^<'&">]*$/, :length => 255
   property :email, String, :required => true, :format => /^rides@([a-z0-9-]+[.])+dhamma.org$/, :message => "must be of format: rides@*dhamma.org", :length => 255
   property :password, String, :required => false, :format => /^[^<'&">]*$/, :length => 255
-  property :bcc, Boolean, :required => false
+  property :bcc, Boolean, :required => false, :default => false
   property :enabled, Boolean, :required => true
 
   timestamps :at
@@ -15,7 +15,7 @@ class Venue
   belongs_to :center
 
   has n, :venue_configs
-  has n, :boards
+  has n, :boards, :order => :position
   
   # require 'dm-serializer'
   # alias :to_x :to_xml_document
@@ -65,19 +65,23 @@ CODE
     end
   end
 
+  def default_locale
+    venue_configs.first.locale.code
+  end
+
   def locale_for(code)
     v = venue_configs.detect do |vc|
       vc.locale.code == code
     end
-    v.locale if v
+    code if v
   end
 
   def protected?
-    !password.nil?
+    password
   end
 
   def name
-    domain.name
+    center.name
   end
   
   def languages
@@ -86,15 +90,19 @@ CODE
     end
   end
 
-  def self.retrieve(lang_code, venue_name, board_name)
-    if(!lang_code.nil? && lang_code.size != 2 && board_name.nil?)
-      retrieve(nil, lang_code, venue_name)
-    else
-      # TODO better query
-      venue = all().detect{ |v| v.domain.name == venue_name}
-      board = venue.nil? ? nil : (venue.board_for(board_name) || venue.boards.first)
-      locale = venue.nil? ? nil : (venue.locale_for(lang_code) || venue.venue_configs.first.locale)
-      [locale, venue, board]
-    end
+  def self.for_name(name)
+    Venue.first(Venue.center.name => name, :enabled => true)
   end
+
+  # def self.retrieve(lang_code, venue_name, board_name)
+  #   if(!lang_code.nil? && lang_code.size != 2 && board_name.nil?)
+  #     retrieve(nil, lang_code, venue_name)
+  #   else
+  #     # TODO better query
+  #     venue = all().detect{ |v| v.center.name == venue_name}
+  #     board = venue.nil? ? nil : (venue.board_for(board_name) || venue.boards.first)
+  #     locale = venue.nil? ? nil : (venue.locale_for(lang_code) || venue.venue_configs.first.locale)
+  #     [locale, venue, board]
+  #   end
+  # end
 end

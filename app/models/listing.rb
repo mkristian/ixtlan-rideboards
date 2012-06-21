@@ -2,9 +2,9 @@ class Listing
   include DataMapper::Resource
 
   property :id, Serial
-  property :location, String, :required => true, :format => /^[^<'&">]*$/, :length => 255, :message => "Please enter a valid Location"
-  property :email, String, :required => true, :length => 255, :message => "Please enter a valid Email", :format => :email #/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/
-  property :name, String, :required => true, :format => /^[^<'&">]*$/, :length => 255, :message => "Please enter a valid Name"
+  property :location, String, :required => true, :format => /^[^<">]*$/, :length => 255, :message => "Please enter a valid Location"
+  property :email, String, :required => true, :length => 255, :message => "Please enter a valid Email", :format => :email_address
+  property :name, String, :required => true, :format => /^[^<&">]*$/, :length => 255, :message => "Please enter a valid Name"
   property :ridedate, Date, :required => true
 
   validates_with_block :ridedate do
@@ -49,13 +49,25 @@ class Listing
     if(email == "test@rides.server.dhamma.org")
       self.password = "31415"
     else
-      self.password = Ixtlan::Passwords.generate_numeric(5)
+      self.password = generate_password(5)
     end
+  end
+
+  def new_contact(*args)
+    Contact.new(self, *args)
   end
 
   def self.first!(*args)
     result = self.first(*args)
     raise DataMapper::ObjectNotFoundError.new("Listing" + args.inspect) if result.nil?
     result
+  end
+
+  private
+
+  def generate_password(length = 12)
+    password = Array.new(length).map { (48 + rand(10)).chr }.join
+    password = generate_password(length) unless password =~ /^[0-9]+$/
+    password
   end
 end

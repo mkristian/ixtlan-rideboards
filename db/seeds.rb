@@ -27,3 +27,24 @@ if c.new?
   c.updated_at = c.created_at
   c.save!
 end
+ct = Center.first || Center.create(:name => 'test')
+v = Venue.first || Venue.create(:fullname => 'Dhamma Test',
+                                :email => 'rides@test.dhamma.org',
+                                :enabled => true,
+                                :center => ct,
+                                :modified_by => u)
+en = Locale.first || Locale.create(:code => 'en')
+VenueConfig.first || VenueConfig.create(:venue => v,
+                                        :home_url => 'http://www.test.dhamma.org',
+                                        :schedule_url => 'http://www.test.dhamma.org/schedule',
+                                        :locale => en,
+                                        :modified_by => u)
+b = Board.first || Board.create(:name => 'center',
+                                :fullname => 'Main Center',
+                                :position => 1,
+                                :enabled => true,
+                                :modified_by => u,
+                                :venue => v)
+BoardConfig.first || BoardConfig.create(:locale => en,
+                                       :board => b,
+                                       :modified_by => u)
