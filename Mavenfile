@@ -47,6 +47,6 @@ end
 #end
 
 # latest version has bug with PUT + DELETE request
-jar 'org.jruby.rack:jruby-rack', '1.0.10'
+jar 'org.jruby.rack:jruby-rack', '1.1.4'
 
 # vim: syntax=Ruby
