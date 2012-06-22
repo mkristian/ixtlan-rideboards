@@ -11,7 +11,6 @@ gem 'railties',       RAILS_VERSION, :require => 'rails'
 gem 'tzinfo',         '~> 0.3.32'
 
 gem 'dm-rails',               '~> 1.2.1'
-gem 'dm-sqlite-adapter', DM_VERSION
 
 # You can use any of the other available database adapters.
 # This is only a small excerpt of the list of all available adapters
@@ -79,3 +78,11 @@ gem "ixtlan-error-handler", "~> 0.2.0"
 gem "ixtlan-audit", "~> 0.2.0"
 
 gem 'vellam', :path => '../../datamapper/vellam'
+
+group :development do
+  gem 'dm-sqlite-adapter', DM_VERSION
+end
+
+group :production do
+  gem 'dm-postgres-adapter', DM_VERSION
+end

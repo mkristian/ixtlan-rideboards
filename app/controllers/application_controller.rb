@@ -1,9 +1,9 @@
 require 'param_filter'
-#require 'rails/data_mapper/middleware/identity_map'
+require 'dm-rails/middleware/identity_map'
 
 class ApplicationController < ActionController::Base
 
-#  use Rails::DataMapper::Middleware::IdentityMap
+  use Rails::DataMapper::Middleware::IdentityMap
 
   respond_to :json
 

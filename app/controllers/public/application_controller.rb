@@ -1,5 +1,9 @@
 require 'param_filter'
+require 'dm-rails/middleware/identity_map'
+
 class Public::ApplicationController < ActionController::Base
+
+  use Rails::DataMapper::Middleware::IdentityMap
 
   layout "public"
 

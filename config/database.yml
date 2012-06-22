@@ -20,5 +20,4 @@ test:
   database: db/test.db
   <<: *defaults
 production:
-  database: db/production.db
-  <<: *defaults
+  uri: DataMapper.setup(:default, ENV['DATABASE_URL'])
