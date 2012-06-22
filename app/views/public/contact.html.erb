@@ -8,18 +8,18 @@
 	<h4 style="color:red;"><%=h msg %></h3>
         <% end
            end %>
-         <% form_for(:contact, :url => (params[:action] == 'new' ? "../contact" : "contact")) do |f| %>
+         <%= form_for(:contact, :url => "contact") do |f| %>
 	 <table>
 	 <tr><td><b><%= "Your name" %>:</b></td>
-	 <td><%= display(f.text_field(:name, :size => 32, :maxlength => 32), :name) %>
+	 <td><%= display_contact(f.text_field(:name, :size => 32, :maxlength => 32), :name) %>
 	  </td>
 	  </tr>
 	 <tr><td><b><%= "Your return email address" %>:</b></td>
-	 <td><%= display(f.text_field(:email, :size => 32, :maxlength => 32), :email) %>
+	 <td><%= display_contact(f.text_field(:email, :size => 32, :maxlength => 32), :email) %>
 	  </td>
 	  </tr>
 	 <tr><td><b><%= "Your phone number (optional)" %>:</b></td>
-	 <td><%= display(f.text_field(:phone, :size => 32, :maxlength => 32), :phone) %>
+	 <td><%= display_contact(f.text_field(:phone, :size => 32, :maxlength => 32), :phone) %>
 	  </td>
 	  </tr>
 <tr>

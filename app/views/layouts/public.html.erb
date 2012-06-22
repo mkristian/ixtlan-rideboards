@@ -4,9 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= @venue.fullname if @venue %> Ride Share Boards</title>
+  <title><%= @board.venue.fullname if @board.venue %> Ride Share Boards</title>
   <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag 'rideboard' %>
+  <%= stylesheet_link_tag 'rides' %>
   <% if @board %>
   <link rel="alternate" type="application/atom+xml" title="<%= @board.name.capitalize + ' ' + 'Rideboard' + ' - ' + @board.venue.fullname %>" href="<%= @path_prefix %>.rss">
   <% end %>

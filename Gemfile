@@ -54,6 +54,20 @@ group :test do
   gem 'turn', '~> 0.9.4', :require => false
 end
 
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyrhino', :platforms => :jruby
+
+  gem 'uglifier', '>= 1.0.3'
+end
+
+
 gem "resty-generators", :path => '../../rails-resty-gwt/resty-generators'
 gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
 gem "ixtlan-core", :path => '../../ixtlan/ixtlan-core'

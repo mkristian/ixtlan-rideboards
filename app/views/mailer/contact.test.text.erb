@@ -1,0 +1,20 @@
+Hello <%= @contact.listing.name %>
+
+Please contact <%= @contact.name.strip %> in order to discuss your <%= "ride offer" if @contact.listing.driver %><%= "ride request" unless @contact.listing.driver %> to <%= @contact.listing.board.fullname %> on <%= @contact.listing.ridedate.to_s %>.
+
+You can reach <%= @contact.name.strip %> by email at: <%= @contact.email.strip %>
+<% if @contact.phone %>or by telephone at: <%= @contact.phone %>.
+<% end %>
+Please do not reply to this email unless you require additional assistance.
+
+With best wishes,
+<%= contact.listing.board.venue.fullname %> Rideshare
+<%= contact.listing.board.venue.email %>
+
+
+--------------------------------------------------------------------------
+This rideshare board is hosted and maintained by volunteers solely for the
+purpose of facilitating rides. We cannot guarantee a ride, and
+assume no responsibility whatsoever for the safety of participants or for any
+other issues arising as a result of participation.
+--------------------------------------------------------------------------

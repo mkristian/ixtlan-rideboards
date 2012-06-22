@@ -1,83 +1,68 @@
 
 class Mailer < ActionMailer::Base
+  
+  def contact(lang, contact)
+    @contact = contact
+    config = { 
+      :from => "#{contact.listing.board.venue.fullname} <#{contact.listing.board.venue.email}>",
+      :to => "#{contact.listing.name} <#{contact.listing.email}>", 
+      :subject => "Rideshare contact information" + (contact.listing.board.venue.bcc ? " for #{contact.listing.name} <#{contact.listing.email}>" : ""),
+      :template_name => find_template("contact", lang, contact.listing.board.venue)
+    }
 
-  def forgot_password(recipient, pwd)
-    @subject    = 'Rideboard'
-    @body       = {:pwd => pwd}
-    @recipients = recipient
-    @from       = 'do-not-reply@rides.server.dhamma.org'
-    @sent_on    = Time.now
-    @headers    = {}
+    config.merge!({:bcc => contact.listing.board.venue.email}) if contact.listing.board.venue.bcc
+    mail(config)
   end
   
-  def contact(contact)
-    @subject    = "Rideshare contact information" + (contact.listing.board.venue.bcc ? " for #{contact.listing.name} <#{contact.listing.email}>" : "")
-
-    @bcc        = contact.listing.board.venue.email if contact.listing.board.venue.bcc
-    @contact    = contact
-    @recipients = "#{contact.listing.name} <#{contact.listing.email}>"
-    @from       = "#{contact.listing.board.venue.fullname} <#{contact.listing.board.venue.email}>"
-    @sent_on    = Time.now
-    @headers    = {}
-  end
-  
-  def confirm(listing, board_url, locale)
-    @subject    = "Rideshare email confirmation" + (listing.board.venue.bcc ? " for #{listing.name} <#{listing.email}>" : "")
-
-    @bcc = listing.board.venue.email if listing.board.venue.bcc
-
-    # first set the langugae state of the model instance
-    #TODO  truncating might not be sufficient
-    #listing.board.venue.lang_code = locale
+  def confirm(lang, listing, board_url)
+    @listing = listing
+    @board_url = board_url
 
     format = listing.board.venue.date_format || "%e.%b %Y"
-   
-    @body       = {:listing => listing,
-      :board_url => board_url,
-      :date =>  listing.ridedate.strftime(format).strip}
-    @recipients = "#{listing.name} <#{listing.email}>"
-    @from       = "#{listing.board.venue.fullname} <#{listing.board.venue.email}>"
-    @sent_on    = Time.now
-    @headers    = {}
-    # find_template(locale)
-    # logger.debug "(#{self.class}) using template #{@template} for locale #{locale}" if logger
+    @date = listing.ridedate.strftime(format).strip
+    
+    config = { 
+      :from => "#{listing.board.venue.fullname} <#{listing.board.venue.email}>",
+      :to => "#{listing.name} <#{listing.email}>", 
+      :subject => "Rideshare email confirmation" + (listing.board.venue.bcc ? " for #{listing.name} <#{listing.email}>" : ""),
+      :template_name => find_template("confirm", lang, contact.listing.board.venue)
+    }
+
+    config.merge!({:bcc => listing.board.venue.email}) if listing.board.venue.bcc
+    mail(config)
   end
 
-  def remind(listing, board_url)
-    @subject    = 'Rideshare removal code reminder'
-    @body       = {:listing => listing, :board_url => board_url}
-    @recipients = "#{listing.name} <#{listing.email}>"
-    @from       = "#{listing.board.venue.fullname} <#{listing.board.venue.email}>"
-    @sent_on    = Time.now
-    @headers    = {}
+  def remind(lang, listing, board_url)
+    @listing = listing
+    @board_url = board_url
 
-    # TODO remove hardcoded locale !!!!
-    # locale = "en_GB"
-    # find_template(locale)
-    # logger.debug "using template #{@template} for locale #{locale}" if logger
+    config = { 
+      :from => "#{listing.board.venue.fullname} <#{listing.board.venue.email}>",
+      :to => "#{listing.name} <#{listing.email}>", 
+      :subject => 'Rideshare removal code reminder',
+      :template_name => find_template("remind", lang, listing.board.venue)
+    }
+
+    mail(config)
   end
 
   private
-  # def find_template(wanted_locale)
-  #   if wanted_locale=~ /.*_.*/
-  #     if do_find_template wanted_locale
-  #       return
-  #     end
-  #     wanted_locale = wanted_locale.gsub(/_.*/, '')
-  #   end
-  #   do_find_template wanted_locale
-  # end
 
-  # def do_find_template(wanted_locale)
-  #   templates = Dir.glob("#{template_path}/#{@template}.*.rhtml")
-  #   templates.each do |path|
-  #     basename = File.basename(path)
-  #     locale = basename.gsub(/#{@template}.|.rhtml/, '')
-  #     if locale == wanted_locale
-  #       @template = basename
-  #       return true
-  #     end
-  #   end
-  #   return false
-  # end
+  def find_template(template_name, lang, venue)
+    path = Rideboard::Application.root + 'app' + 'views' + 'mailer' + "#{template_name}*.erb"
+    lvname = "#{template_name}.#{lang}.#{venue.name}"
+    vname = "#{template_name}.#{venue.name}"
+    lname = "#{template_name}.#{lang}"
+
+    lvfile = nil
+    vfile = nil
+    lfile = nil
+    Pathname.glob(path.to_s).map do |f|
+      f = f.basename.to_s
+      lvfile = f if f =~ /^#{lvname}/
+      vfile = f if f =~ /^#{vname}/
+      lfile = f if f =~ /^#{lname}/
+    end
+    lvfile || vfile || lfile || template_name
+  end
 end

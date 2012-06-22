@@ -1,21 +1,19 @@
-Hello <%=h(@listing.name) %>,
+Hello <%= @listing.name %>,
 
 Your name has been added to our online rideshare board at: 
-<%=h @board_url %>
-<% if @listing.board.venue.password && @listing.board.venue.password != 'NULL' && @listing.board.venue.password != '' 
-# TODO fix the sqlite big with the NULL %>
-
-The password to access the rideboard is: <%=h @listing.board.venue.password %>
+<%= @board_url %>
+<% if @listing.board.venue.password %>
+The password to access the rideboard is: <%= @listing.board.venue.password %>
 <% end %>
 You may have added your name yourself, or we may have added your name for you
 if you noted on your application that you could give other participants a ride
 to the course. The following information is listed:
 
-Name: <%= h(@listing.name) %>
-Destination: <%= h(@listing.board.fullname) %>
-Location: <%= h(@listing.location) %>
+Name: <%= @listing.name %>
+Destination: <%= @listing.board.fullname %>
+Location: <%= @listing.location %>
 Type: <%= "Offer Ride" if @listing.driver %><%= "Request Ride" unless @listing.driver %>
-Date: <%=h @date %>
+Date: <%= @date %>
 
 Visitors to the online rideshare board will be able to send you an email to
 coordinate sharing a ride with you.  Your email address will not be visible to
@@ -27,8 +25,8 @@ Entry column, and entering this removal code: <%=h @listing.password %>
 Please let us know if you have any questions.
 
 With best wishes,
-<%= h(@listing.board.venue.fullname) %> Rideshare
-<%= h(@listing.board.venue.email) %>
+<%= @listing.board.venue.fullname %> Rideshare
+<%= @listing.board.venue.email %>
 
 --------------------------------------------------------------------------
 This rideshare board is hosted and maintained by volunteers solely for the

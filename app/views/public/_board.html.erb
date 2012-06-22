@@ -30,7 +30,7 @@
 	      </tr>
 	      <tr>
 		<td>
-		  <a href="<%= "listings/wanted" %>">Request A Ride</a>
+		  <a href="<%= to_url('wanted') %>">Request A Ride</a>
 		</td>
 	      </tr>
 	      <tr>
@@ -51,7 +51,7 @@
 	      </tr>
 	      <tr>
 		<td>
-		  <a href="listings/offer">Offer A Ride</a>
+		  <a href="<%= to_url('offer') %>">Offer A Ride</a>
 		</td>
 	      </tr>
 	      <tr>
@@ -99,8 +99,8 @@
               <td><%= h(listing.name) %></td>
               <td><%= h(listing.location) %></td>
               <td><%= h(listing.ridedate) %></td>
-              <td><a href="<%= "listings/#{listing.id}/contact/new" %>">Contact Me</a></td>
-              <td><a href="<%= "listings/#{listing.id}/edit" %>">X</a></td>             
+              <td><a href="<%= to_url(listing.id, 'new_contact') %>">Contact Me</a></td>
+              <td><a href="<%= to_url(listing.id, 'edit') %>">X</a></td>             
                  </tr>
             <% end
 	    end %>
@@ -134,8 +134,8 @@
                 <td><%= h(listing.name) %></td>
                 <td><%= h(listing.location) %></td>
                 <td><%= h(listing.ridedate) %></td>
-              <td><a href="<%= "listings/#{listing.id}/contact/new" %>">Contact Me</a></td>
-              <td><a href="<%= "listings/#{listing.id}/edit" %>">X</a></td>             
+              <td><a href="<%= to_url(listing.id, 'new_contact') %>">Contact Me</a></td>
+              <td><a href="<%= to_url(listing.id, 'edit') %>">X</a></td>             
               </tr>
             <%  end
 	    end %>
@@ -152,10 +152,10 @@
 </div>
         <!-- End Rideboard-->
 
-  <% unless @venue.iframe_url? %>
+  <% unless @board.venue.iframe_url? %>
   <p align="center"><img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/></p>
-   <p align="center"> <%= "| " + link_to("Home", @venue.home_url) if @venue.home_url? %>
-    <%= "| " + link_to("Course Schedule", @venue.schedule_url) if @venue.schedule_url? %>
-    <%= "| " + link_to("Course Checklist", @venue.checklist_url) if @venue.checklist_url? %>
-    <%= " |" if @venue.home_url? or @venue.schedule_url? or @venue.checklist_url? %></p>
+   <p align="center"> <%= "| " + link_to("Home", @board.venue.home_url) if @board.venue.home_url? %>
+    <%= "| " + link_to("Course Schedule", @board.venue.schedule_url) if @board.venue.schedule_url? %>
+    <%= "| " + link_to("Course Checklist", @board.venue.checklist_url) if @board.venue.checklist_url? %>
+    <%= " |" if @board.venue.home_url? or @board.venue.schedule_url? or @board.venue.checklist_url? %></p>
   <% end %>

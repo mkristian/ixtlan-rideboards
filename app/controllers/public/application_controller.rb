@@ -1,4 +1,5 @@
-class Public::ApplicationController  < ActionController::Base
+require 'param_filter'
+class Public::ApplicationController < ActionController::Base
 
   layout "public"
 
@@ -8,30 +9,34 @@ class Public::ApplicationController  < ActionController::Base
 
   skip_before_filter :authorize, :check_session_expiry
 
+  protected
+
+  def filter
+    @_filter ||= ParamFilter.new
+  end
+
   def session_timeout
     raise "should not be used"
   end
   # p before_filters
 
-  protected
-
   def setup
-    @venue = Venue.for_name(params[:venue])
-    if @venue
-      @board = @venue.board_for(params[:board])
+    venue = Venue.for_name(params[:venue])
+    if venue
+      @board = venue.board_for(params[:board])
       if @board
-        @lang = @venue.locale_for(params[:lang])
+        @lang = venue.locale_for(params[:lang])
         if @lang
-         @path_prefix = url_for(:controller => "public/boards",
-                                :action => :show, 
-                                :venue => @venue.name,
-                                :board => @board.name,
-                                :lang => @lang)
-          @venue.locale = @lang
+          @path_prefix = url_for(:controller => "public/boards",
+                                 :action => :show, 
+                                 :venue => venue.name,
+                                 :board => @board.name,
+                                 :lang => @lang)
+          @board.venue.locale = @lang
           true
         else
           @lang = venue.default_locale
-          redirect(@lang, @venue, @board)
+          redirect(@lang, venue, @board)
           false
         end
       else

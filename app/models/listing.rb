@@ -21,6 +21,24 @@ class Listing
 
   belongs_to :board
 
+  def send_confirmation(base_url, lang)
+    url = board.venue.iframe_url
+    if url.blank? 
+      url = base_url
+    end
+      
+    Mailer.confirm(lang, self, url).deliver
+  end
+
+  def send_reminder(base_url, lang)
+    url = board.venue.iframe_url
+    if url.blank? 
+      url = base_url
+    end
+      
+    Mailer.remind(lang, self, url).deliver
+  end
+
   # require 'dm-serializer'
   # alias :to_x :to_xml_document
   # def to_xml_document(opts = {}, doc = nil)
@@ -55,12 +73,6 @@ class Listing
 
   def new_contact(*args)
     Contact.new(self, *args)
-  end
-
-  def self.first!(*args)
-    result = self.first(*args)
-    raise DataMapper::ObjectNotFoundError.new("Listing" + args.inspect) if result.nil?
-    result
   end
 
   private

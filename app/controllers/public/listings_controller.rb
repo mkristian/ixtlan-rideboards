@@ -1,6 +1,23 @@
 class Public::ListingsController < Public::ApplicationController
 
-  before_filter :setup
+  before_filter :setup, :cleanup_params
+
+  private
+
+  def cleanup_params
+    filter.filter(params[:listing])
+  end
+
+  def listing
+    @listing ||= @board.listings.get(params[:id])
+    if @listing
+      @listing
+    else
+      @listing = "- error: Listing(#{params[:id]}) no found"
+      render :template => "public/nolisting"
+      false
+    end
+  end
 
   public
 
@@ -10,102 +27,86 @@ class Public::ListingsController < Public::ApplicationController
 
   # GET /listings/offer
   def offer
-    @listing = Listing.new
-    @listing.driver = true
-    @listing.board = @board
+    @listing = @board.new_listing_offer
 
     render :template => "public/new"
   end
 
   # GET /listings/wanted
   def wanted
-    @listing = Listing.new
-    @listing.driver = false
-    @listing.board = @board
+    @listing = @board.new_listing_request
 
     render :template => "public/new"
   end
 
   # GET /listings/1/edit
   def edit
-    @listing = Listing.first(:id => params[:id], :board => @board)
-
-    if @listing
+    if listing
       render :template => "public/removal"
-    else
-      @listing = "- error: Listing(#{params[:id]}) no found"
-      render :template => "public/nolisting"
     end
   end
 
   # POST /listings/1/reminder
   def reminder
-    @listing = Listing.first!(:id => params[:id], :board => @board)
-
-    # @listing.board.venue has no lang_code state set !!!
-    url = @venue.iframe_url
-    if url.blank?
-      if @venue.password
-        # TODO maybe it is just the other url as well ?!
-        url = url_for(:controller => :listings, 
-                      :action => :edit) 
-      else
-        url = url_for(:id => @listing.id,
-                      :venue => @venue.name, 
-                      :board => @board.name, 
-                      :lang => @lang, 
-                      :controller => 'public/listings', 
-                      :action => :edit)
-      end
+    if listing
+      url = url_for(:id => listing.id,
+                    :venue => @board.venue.name, 
+                    :board => @board.name, 
+                    :lang => @lang, 
+                    :controller => 'public/listings', 
+                    :action => :edit)
+      listing.send_reminder(url, @lang)
+      render :template => "public/reminder_sent"
     end
-    logger.debug "listing url: " + url if logger && logger.debug?
-    Mailer.deliver_remind(@listing, url)
-    render :template => "public/reminder_sent"
   end
 
   # POST /listings
   def create
     date = DateTime.civil(params[:listing].delete("ridedate(1i)").to_i, params[:listing].delete("ridedate(2i)").to_i, params[:listing].delete("ridedate(3i)").to_i)
-    @listing = Listing.new(params[:listing])
-    @listing.ridedate = date
-    @listing.board = @board
-    @listing.reset_password
+    @listing = @board.create_listing(date, params[:listing])
      
-    if !Listing.first(:board_id => @listing.board.id, 
-                      :name => @listing.name, 
-                      :location => @listing.location, 
-                      :email => @listing.email, 
-                      :ridedate => @listing.ridedate, 
-                      :driver => @listing.driver).nil?
-      render :template => "public/exists"      
-    elsif @listing.save
-      url = @venue.iframe_url
-      if url.blank? 
-        url = url_for(:venue => @venue.name, 
-                      :id => @board.id, 
-                      :lang => @lang, 
-                      :controller => :boards, 
-                      :action => :show)
+    if @listing
+      if @listing.valid?
+        @listing.send_confirmation(@base_url, @lang)
+        render :template => "public/created"
+      else
+        render :template => "public/new"
       end
-      
-      Mailer.deliver_confirm(@listing, url, @lang)
-
-      render :template => "public/created"
     else
-      render :template => "public/new"
+      # just create listing for log and view
+      @listing = Listing.new(params[:listing])
+      render :template => "public/exists"      
     end
   end
 
   # DELETE /listings/1
   def destroy
-    @listing = Listing.first(:id => params[:id], :board => @board)
+    @listing = @board.delete_listing(param[:id])
 
-    if @listing && params[:password] == @listing.password
-      @listing.destroy
+    if @listing
       render :template => "public/confirmed"
     else
+      @listing = '- error: not authorized, wrong password'
       render :template => "public/not_authorized"
     end
   end
 
+  def new_contact
+    if listing
+      @contact = listing.new_contact
+
+      render :template => "public/contact"
+    end
+  end
+
+  def contact
+    if listing
+      @contact = listing.new_contact(params[:contact])
+      if @message = @contact.send_message(@lang)
+        render :template => "public/sent" 
+      else
+        render :template => "public/contact"
+      end
+    end
+  end
 end

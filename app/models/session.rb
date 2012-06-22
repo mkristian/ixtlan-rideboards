@@ -2,8 +2,8 @@ require 'ixtlan/guard/abstract_session'
 require 'heartbeat'
 
 class Session < Ixtlan::Guard::AbstractSession
-  include ActiveModel::Serializers::JSON
-  include ActiveModel::Serializers::Xml
+#  include ActiveModel::Serializers::JSON
+#  include ActiveModel::Serializers::Xml
 
   # TODO bug in vellam/babel which do need to use attributes instead of value when decending the object tree
   def attributes

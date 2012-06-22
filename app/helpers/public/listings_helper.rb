@@ -2,7 +2,15 @@
 module Public::ListingsHelper
 
   def display(tag, field)
-    if !@listing.errors.on(field.to_sym).nil?
+    if @listing.errors[field.to_sym].any?
+      "<div class='fieldWithErrors'>#{tag}</div>".html_safe
+    else
+      tag
+    end
+  end
+
+  def display_contact(tag, field)
+    if @contact.errors[field.to_sym].any?
       "<div class='fieldWithErrors'>#{tag}</div>".html_safe
     else
       tag

@@ -1,11 +1,10 @@
-Hello <%= h(@listing.name) %>,
+Hello <%= @listing.name %>,
 
-Here is your removal code: <%= h(@listing.password) %>
+Here is your removal code: <%= @listing.password %>
 
 To remove your listing, please enter this code at:
 <%= @board_url %>
-<% if @listing.board.venue.password && @listing.board.venue.password != 'NULL'
-# TODO fix the sqlite big with the NULL %>
+<% if @listing.board.venue.password %>
 
 The password to access the rideboard is: <%= @listing.board.venue.password %>
 <% end %>
@@ -15,8 +14,8 @@ Board. It was mostly likely an innocent mistake, so you can safely disregard
 this message.
 
 With best wishes,
-<%= h(@listing.board.venue.fullname) %> Rideshare
-<%= h(@listing.board.venue.email) %>
+<%= @listing.board.venue.fullname %> Rideshare
+<%= @listing.board.venue.email %>
 
 --------------------------------------------------------------------------
 This rideshare board is hosted and maintained by volunteers solely for

@@ -22,8 +22,11 @@ Rideboard::Application.routes.draw do
             get :wanted
             get :offer
           end
-          post :reminder, :on => :member
-          resource :contact
+          member do
+            post :reminder
+            get :new_contact
+            post :contact
+          end
         end
       end
     end

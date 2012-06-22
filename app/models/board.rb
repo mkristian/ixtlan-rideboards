@@ -15,6 +15,50 @@ class Board
   has n, :board_configs
   has n, :listings
 
+  def new_listing_offer
+    listing = Listing.new
+    listing.driver = true
+    listing.board = self
+    listing
+  end
+
+  def new_listing_request
+    listing = Listing.new
+    listing.driver = false
+    listing.board = self
+    listing
+  end
+
+  def create_listing(date, params)
+    listing = Listing.new(params)
+    listing.ridedate = date
+    listing.board = self
+    listing.reset_password
+     
+    if Listing.first(:board => listing.board, 
+                     :name => listing.name, 
+                     :location => listing.location, 
+                     :email => listing.email, 
+                     :ridedate => listing.ridedate, 
+                     :driver => listing.driver)
+      nil
+    else
+      listing.save
+      listing
+    end
+  end
+
+  def delete_listing(id, password)
+    if l = listings.get(id)
+      if password.to_s == l.password.to_s
+        l.destroy
+        l
+      else
+        nil
+      end
+    end
+  end
+
   # require 'dm-serializer'
   # if protected_instance_methods.find {|m| m == 'to_x'}.nil?
   #   alias :to_x :to_xml_document
