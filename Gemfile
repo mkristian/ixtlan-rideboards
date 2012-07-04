@@ -75,7 +75,7 @@ gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
 gem "jruby-openssl", "~> 0.7.4", :platforms => :jruby
 gem "enforce-ssl"
 gem "ixtlan-error-handler", "~> 0.2.0"
-gem "ixtlan-audit", "~> 0.2.0"
+gem "ixtlan-audit", "~> 0.2.1"
 gem 'ixtlan-babel', '~> 0.1.2' #, :path => '../../ixtlan/ixtlan-babel'
 
 group :development do
