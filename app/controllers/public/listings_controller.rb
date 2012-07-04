@@ -81,7 +81,7 @@ class Public::ListingsController < Public::ApplicationController
 
   # DELETE /listings/1
   def destroy
-    @listing = @board.delete_listing(param[:id])
+    @listing = @board.delete_listing(params[:id])
 
     if @listing
       render :template => "public/confirmed"
