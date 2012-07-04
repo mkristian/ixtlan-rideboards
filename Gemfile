@@ -55,29 +55,28 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+#group :assets do
+#  gem 'sass-rails',   '~> 3.2.3'
+#  gem 'coffee-rails', '~> 3.2.1'
+#
+#  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+#  gem 'therubyracer', :platforms => :ruby
+#  gem 'therubyrhino', :platforms => :jruby
+#
+#  gem 'uglifier', '>= 1.0.3'
+#end
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'therubyrhino', :platforms => :jruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
-
-
-gem "resty-generators", :path => '../../rails-resty-gwt/resty-generators'
+#gem "resty-generators", :path => '../../rails-resty-gwt/resty-generators'
 gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
-gem "ixtlan-core", :path => '../../ixtlan/ixtlan-core'
+gem "ixtlan-core", '~> 0.7.5' #, :path => '../../ixtlan/ixtlan-core'
 gem "ixtlan-session-timeout"
-gem "ixtlan-guard"
+gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
 gem "jruby-openssl", "~> 0.7.4", :platforms => :jruby
 gem "enforce-ssl"
 gem "ixtlan-error-handler", "~> 0.2.0"
 gem "ixtlan-audit", "~> 0.2.0"
-
-gem 'vellam', :path => '../../datamapper/vellam'
+gem 'ixtlan-babel', '~> 0.1.2' #, :path => '../../ixtlan/ixtlan-babel'
 
 group :development do
   gem 'dm-sqlite-adapter', DM_VERSION
@@ -86,3 +85,7 @@ end
 group :production do
   gem 'dm-postgres-adapter', DM_VERSION
 end
+
+gem 'gwt-rails', :path => '../../maven/gwt-rails'
+gem 'ixtlan-generators', :path => '../../ixtlan/ixtlan-generators'
+
