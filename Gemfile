@@ -86,6 +86,6 @@ group :production do
   gem 'dm-postgres-adapter', DM_VERSION
 end
 
-gem 'gwt-rails', :path => '../../maven/gwt-rails'
-gem 'ixtlan-generators', :path => '../../ixtlan/ixtlan-generators'
+#gem 'gwt-rails', :path => '../../maven/gwt-rails'
+#gem 'ixtlan-generators', :path => '../../ixtlan/ixtlan-generators'
 
