@@ -1,7 +1,7 @@
-require 'babel/factory'
-require 'babel/hash_filter'
+require 'ixtlan/babel/factory'
+require 'ixtlan/babel/hash_filter'
 
-class ParamFilter < Babel::HashFilter
+class ParamFilter < Ixtlan::Babel::HashFilter
   
   attr_reader :updated_at, :params
   
