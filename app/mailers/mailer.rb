@@ -25,7 +25,7 @@ class Mailer < ActionMailer::Base
       :from => "#{listing.board.venue.fullname} <#{listing.board.venue.email}>",
       :to => "#{listing.name} <#{listing.email}>", 
       :subject => "Rideshare email confirmation" + (listing.board.venue.bcc ? " for #{listing.name} <#{listing.email}>" : ""),
-      :template_name => find_template("confirm", lang, contact.listing.board.venue)
+      :template_name => find_template("confirm", lang, listing.board.venue)
     }
 
     config.merge!({:bcc => listing.board.venue.email}) if listing.board.venue.bcc
