@@ -1,5 +1,5 @@
-require 'babel/serializer'
-class SessionSerializer < Babel::Serializer
+require 'ixtlan/babel/serializer'
+class SessionSerializer < Ixtlan::Babel::Serializer
 
   add_context(:single,
               :root => 'session',

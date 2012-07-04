@@ -1,5 +1,5 @@
-require 'babel/serializer'
-class ConfigurationSerializer < Babel::Serializer
+require 'ixtlan/babel/serializer'
+class ConfigurationSerializer < Ixtlan::Babel::Serializer
 
   add_context(:single,
               :root => 'configuration',

@@ -1,4 +1,4 @@
-class ErrorSerializer < Babel::NoTimestampSerializer
+class ErrorSerializer < Ixtlan::Babel::NoTimestampSerializer
   add_defaults('error')
 end
 

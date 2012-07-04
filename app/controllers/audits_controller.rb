@@ -1,4 +1,4 @@
-class AuditSerializer < Babel::NoTimestampSerializer
+class AuditSerializer < Ixtlan::Babel::NoTimestampSerializer
   add_defaults('audit')
 end
 
