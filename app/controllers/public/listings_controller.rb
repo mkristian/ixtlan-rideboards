@@ -86,7 +86,10 @@ class Public::ListingsController < Public::ApplicationController
     if @listing
       render :template => "public/confirmed"
     else
-      @listing = '- error: not authorized, wrong password'
+      @listing = @board.listings.get(params[:id])
+      def @listing.to_log 
+        "Listing(#{id}) - error: not authorized, wrong password"
+      end
       render :template => "public/not_authorized"
     end
   end
