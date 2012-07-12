@@ -1,10 +1,12 @@
-<p class="title" align="center">Removal code reminder</p>
-    <fieldset>
-    <div id="center_form">
-    <h3 align="center">Email message sent to '<%= @listing.name %>'</h3
-    </div>
-  </fieldset>
+<p class="title" align="center">
+  <%= _ "Removal code reminder" %>
 </p>
-    <p>
-    <a href="<%= "../.." %>">Return to rideboard</a>
-    </p>
+<fieldset>
+  <div id="center_form">
+    <h3 align="center"><%= _ "Email message sent to" %> '<%= @listing.name %>'</h3>
+  </div>
+</fieldset>
+
+<p>
+  <a href="<%= "../.." %>"><%= _ "Return to rideboard" %></a>
+</p>

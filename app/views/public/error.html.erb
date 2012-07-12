@@ -1,16 +1,9 @@
 <img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/>
 
-  <p>An Unexpected Error Occured.</p>
+<p><%= _ "An Unexpected Error Occured" %>.</p>
 
-  <% if @log_id %>
-  <p>
-      The adminstrators have been informed. The reference number for this
- incident: <%= @log_id%>.
-  </p>
-  <% end %>
-
-  <p>
-    <a href="<%= @path_prefix %>">Return to the Rideboard</a>.
-  </p>
+<p>
+  <a href="<%= @path_prefix %>"><%= _ "Return to rideboard" %></a>.
+</p>
 		  
 <img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/>

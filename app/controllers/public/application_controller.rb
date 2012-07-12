@@ -37,6 +37,10 @@ class Public::ApplicationController < ActionController::Base
                                  :board => @board.name,
                                  :lang => @lang)
           @board.venue.locale = @lang
+          FastGettext.set_locale(@lang)
+          if FastGettext.translation_repositories.key?(venue.name)
+            FastGettext.text_domain = venue.name
+          end
           true
         else
           @lang = venue.default_locale
@@ -44,11 +48,11 @@ class Public::ApplicationController < ActionController::Base
           false
         end
       else
-        render_not_found
+        render_not_found(venue)
         false
       end
     else
-      render_not_found
+      render_not_found(venue)
       false
     end
   end
@@ -62,13 +66,17 @@ class Public::ApplicationController < ActionController::Base
                           :lang => lang)
       board
     else
-      render_not_found
+      render_not_found(venue)
       "- error: venue '#{venue.name}' has no boards"
     end
   end
 
-  def render_not_found
-    render :template => "public/novenue", :layout => "error", :status => 404
+  def render_not_found(venue = nil)
+    if venue
+      render :template => "public/noboard", :layout => "error", :status => 404
+    else
+      render :template => "public/novenue", :layout => "error", :status => 404
+    end
   end
 end
 

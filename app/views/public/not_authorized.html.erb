@@ -1,10 +1,19 @@
-<p class="title" align="center"><%= "Authorization failure" %></p>
-    <fieldset>
-    <div id="center_form">
-    <h3 align="center">The code you entered does not authorize you to remove this <%= ("Offer" if @listing && @listing.driver == 1) || "Request" %>.</h3>
-      </div>
-  </fieldset>
+<p class="title" align="center">
+  <%= _ "Authorization failure" %>
 </p>
-    <p>
-    <a href="<%= ".." %>">Return to rideboard</a>
-    </p>
+
+<fieldset>
+  <div id="center_form">
+    <h3 align="center">
+      <% if @listing && @listing.driver == 1 -%>
+      <%= _ "The code you entered does not authorize you to remove this Offer" %>.
+      <% else -%>
+      <%= _ "The code you entered does not authorize you to remove this Request." %>.
+      <% end -%>
+    </h3>
+  </div>
+</fieldset>
+
+<p>
+  <a href="<%= ".." %>"><% _ "Return to rideboard" %></a>
+</p>

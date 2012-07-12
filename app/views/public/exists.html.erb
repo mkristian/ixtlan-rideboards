@@ -1,10 +1,19 @@
-  <fieldset>
-  <p class="title" align="center">Ride <%= ("Offer" if @listing.driver) || "Request" %> Exists!</p>
-    <h4 align="center">
-      Your ride <%= ("offer" if @listing.driver) || "request" %> is already on the rideboard.<br/>
-    </h4>
-  </fieldset>
+<fieldset>
+  <p class="title" align="center">
+    <% if @listing.driver -%>
+    <%= _ "Ride Offer Exists" %>!
+    <% else -%>
+    <%= _ "Ride Request Exists" %>!
+    <% end -%>
+  </p>
+  <h4 align="center">
+    <% if @listing.driver -%>
+    <%= _ "Your ride offer is already on the rideboard" %>!
+    <% else -%>
+    <%= _ "Your ride request is already on the rideboard" %>!
+    <% end -%>
+  </h4>
+</fieldset>
+<p>
+  <a href="<%= "." %>"><%= _ "Return to rideboard" %></a>.
 </p>
-    <p>
-    <a href="<%= "." %>">Return to rideboard</a>
-    </p>

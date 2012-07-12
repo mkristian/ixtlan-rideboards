@@ -1,6 +1,8 @@
- 
 <% form_for(:session, :url => "../login") do |f| %>
-  <p><b>Password</b><br/>
-<input type="password" name="password" size="30"/></p>
-<%= submit_tag 'Login' %>
+<p>
+  <b><%= _ "Password" %></b>
+  <br/>
+  <input type="password" name="password" size="30"/>
+</p>
+<%= submit_tag _ "Login" %>
 <% end %>

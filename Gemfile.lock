@@ -88,7 +88,10 @@ GEM
       jdbc-sqlite3 (>= 3.5.8)
     enforce-ssl (0.2.2)
     erubis (2.7.0)
+    fast_gettext (0.6.8)
     fastercsv (1.5.5)
+    gettext_i18n_rails (0.6.6)
+      fast_gettext
     hike (1.2.1)
     i18n (0.6.0)
     ixtlan-audit (0.2.1)
@@ -172,6 +175,7 @@ DEPENDENCIES
   dm-types (~> 1.2.0)
   dm-validations (~> 1.2.0)
   enforce-ssl
+  gettext_i18n_rails
   ixtlan-audit (~> 0.2.1)
   ixtlan-babel (~> 0.1.2)
   ixtlan-core (~> 0.7.5)

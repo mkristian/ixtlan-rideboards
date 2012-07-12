@@ -1,29 +1,36 @@
-<p class="title" align="center">Authorization for removal of listing: <%=h @listing.name %></p>
-    <fieldset>
-    <div id="center_form">
+<p class="title" align="center">
+  <%= _ "Authorization for removal of listing" %>: <%= @listing.name %>
+</p>
+<fieldset>
+  <div id="center_form">
     <form method="post"
-    action="<%= "../#{@listing.id}" %>">
-          <p>Please enter your removal code<br/>
-          <input name="_method" type="hidden" value="delete"/>
-          <input name="password" type="password"/></p>
-          <p>
-		  <% if @listing.driver %>
-          <%= submit_tag "Remove Offer"%>
-        <% else %>
-          <%= submit_tag "Remove Request"%>
-        <% end %>
-	</p>
-	</form>
-          <p>If you have forgotten your removal
-    code, it can be sent to the email 
-    address that was entered in the rideboard to remove this <%= ("Offer" if
-    @listing.driver) || "Request" %>
+	  action="<%= "../#{@listing.id}" %>">
+      <p>
+	<%= _ "Please enter your removal code" %>
+	<br/>
+        <input name="_method" type="hidden" value="delete"/>
+        <input name="password" type="password"/></p>
+      <p>
+	<% if @listing.driver -%>
+        <%= submit_tag _ "Remove Offer"%>
+        <% else -%>
+        <%= submit_tag _ "Remove Request"%>
+        <% end -%>
+      </p>
+    </form>
+    <p>
+      <% if @listing.driver -%>
+      <%= _ "If you have forgotten your removal code, it can be sent to the email address that was entered in the rideboard to remove this Offer" %>.
+      <% else -%>
+      <%= _ "If you have forgotten your removal code, it can be sent to the email address that was entered in the rideboard to remove this Request" %>.
+      <% end -%>
     </p>
     <form action="reminder" method="post">
-    <%= submit_tag "Remind Me"%>
+      <%= submit_tag _ "Remind Me"%>
     </form>
-  </fieldset>
+  </div>
+</fieldset>
 
-    <p>
-    <a href="<%= "../.." %>">Return to rideboard</a>
-    </p>
+<p>
+  <a href="<%= "../.." %>"><%= _ "Return to rideboard" %></a>
+</p>

@@ -89,3 +89,4 @@ end
 #gem 'gwt-rails', :path => '../../maven/gwt-rails'
 #gem 'ixtlan-generators', :path => '../../ixtlan/ixtlan-generators'
 
+gem 'gettext_i18n_rails'

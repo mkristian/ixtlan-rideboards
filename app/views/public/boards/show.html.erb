@@ -1,37 +1,39 @@
-  <p align="center">
-    <% unless @board.venue.iframe_url? %>
-      <%= image_tag "bodhismall2.gif", :align => :bottom, :width => 20, :height => 22, :border => 0, :alt => 'bodhi leaf' %>
-      <span class="title"><%= @board.venue.fullname + " " + "Rideshare Board" %></span>
-      <%= image_tag "bodhismall1.gif", :align => :bottom, :width => 20, :height => 22, :border => 0, :alt => 'bodhi leaf' %>
-      <br/>
-    <% end %>
-    <% if @board.venue.languages.size > 100
-       for language in @board.venue.languages %>
-       <a href="<%=h "#{@path_prefix}/../#{language.code[0,2]}" %>"><%=h language.lang %></a>
-    <% end
-       end %>
-       <% if @board.venue.boards.size > 1 %>
-       | 
-      <% for board in @board.venue.boards %>
-	<% if board.enabled
-	   if board == @board %>
-	  <span class="inactive"><%= h(board.name.capitalize) + " " + "Rideboard" %></span>	     	  
-	  <% else %>
-	  <a href="<%=h "#{board.id}" %>"><%=h(board.name.capitalize) + " " + "Rideboard" %></a>
-	  <% end %>
-	  |
-        <% end %>
-      <% end
-      end %>
-    <br/>
-    <% unless @board.venue.iframe_url? %>
-  	  <img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/>
-      <%= "| " + link_to("Home", @board.venue.home_url) if @board.venue.home_url? %>
-      <%= "| " + link_to("Course Schedule", @board.venue.schedule_url) if @board.venue.schedule_url? %>
-      <%= "| " + link_to("Course Checklist", @board.venue.checklist_url) if @board.venue.checklist_url? %>
-      <%= " |<br/>" if @board.venue.home_url? or @board.venue.schedule_url? or @board.venue.checklist_url? %>        
-    <% end %>
-  </p>
+<p align="center">
+  <% unless @board.venue.iframe_url? -%>
+  <%= image_tag "bodhismall2.gif", :align => :bottom, :width => 20, :height => 22, :border => 0, :alt => 'bodhi leaf' %>
+  <span class="title"><%= @board.venue.fullname %> <%= _ "Rideshare Board" %></span>
+  <%= image_tag "bodhismall1.gif", :align => :bottom, :width => 20, :height => 22, :border => 0, :alt => 'bodhi leaf' %>
+  <br/>
+  <% end -%>
+  <% if @board.venue.languages.size > 1 -%>
+  <%   for language in @board.venue.languages - %>
+  <a href="<%= "#{@path_prefix}/../#{language.code[0,2]}" %>"><%= language.lang %></a>
+  <%   end -%>
+  <% end -%>
+  <% if @board.venue.boards.size > 1 %>
+  | 
+  <%   for board in @board.venue.boards -%>
+  <%     if board.enabled -%>
+  <%       if board == @board -%>
+  <span class="inactive"><%= board.name.capitalize %> <%= _ "Rideboard" %></span>	     	  
+  <%       else -%>
+  <a href="<%= "#{board.id}" %>"><%= board.name.capitalize %> <%= _ "Rideboard" %></a>
+  <%       end -%>
+  |
+  <%     end -%>
+  <%   end -%>
+  <% end -%>
+  <br/>
+  <% unless @board.venue.iframe_url? -%>
+  <img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/>
+  <%= "| " + link_to(_ "Home", @board.venue.home_url) if @board.venue.home_url? %>
+  <%= "| " + link_to(_ "Course Schedule", @board.venue.schedule_url) if @board.venue.schedule_url? %>
+  <%= "| " + link_to(_ "Course Checklist", @board.venue.checklist_url) if @board.venue.checklist_url? %>
+  <%   if @board.venue.home_url? or @board.venue.schedule_url? or @board.venue.checklist_url? -%>
+  | <br />
+  <%   end -%>
+  <% end %>
+</p>
 
 <%= render :partial => "public/board",
            :locals => {:board_path_prefix => @path_prefix }%>

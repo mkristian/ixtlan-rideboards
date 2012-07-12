@@ -1,13 +1,17 @@
-<p class="title" align="center"><%= "Removal request confirmed" %></p>
-    <fieldset>
-    <div id="center_form">
-    <h3 align="center">Ride  <%= ("Offer" if @listing.driver) || "Request" %>
-    for '<%=h @listing.name %>' was removed.<br/>
-     Please review the Rideboard to ensure this change was properly
-    processed.</h3>
-      </div>
-  </fieldset>
+<p class="title" align="center"><%= _ "Removal request confirmed" %></p>
+<fieldset>
+  <div id="center_form">
+    <h3 align="center">
+      <% id @listing.driver -%>
+      <%= _ "Ride Offer for" %> '<%= @listing.name %>' <%= _ "was removed" %>.
+      <% else -%>
+      <&= _ "Ride Request for" %> '<%= @listing.name %>' <%= _ "was removed" %>.
+      <% end -%>
+      <br/>
+      <%= _ "Please review the Rideboard to ensure this change was properly processed." %>
+    </h3>
+  </div>
+</fieldset>
+<p>
+  <a href="<%= ".." %>"><%= _ "Return to rideboard" %></a>
 </p>
-    <p>
-    <a href="<%= ".." %>">Return to rideboard</a>
-    </p>

@@ -1,37 +1,44 @@
-<p class="title" align="center"><%= "Send a message to " + @contact.listing.name %></p>
-    <fieldset>
-      <div id="center_form">
-	<% if @contact.errors.size == 0 %>
-      <h3 align="center"><%= "Please fill in the following fields" %>:</h3>
-      <% else %>
-      <%  @contact.errors.each do |k, msg| %>
-	<h4 style="color:red;"><%=h msg %></h3>
-        <% end
-           end %>
-         <%= form_for(:contact, :url => "contact") do |f| %>
-	 <table>
-	 <tr><td><b><%= "Your name" %>:</b></td>
-	 <td><%= display_contact(f.text_field(:name, :size => 32, :maxlength => 32), :name) %>
-	  </td>
-	  </tr>
-	 <tr><td><b><%= "Your return email address" %>:</b></td>
-	 <td><%= display_contact(f.text_field(:email, :size => 32, :maxlength => 32), :email) %>
-	  </td>
-	  </tr>
-	 <tr><td><b><%= "Your phone number (optional)" %>:</b></td>
-	 <td><%= display_contact(f.text_field(:phone, :size => 32, :maxlength => 32), :phone) %>
-	  </td>
-	  </tr>
-<tr>
-<td>&nbsp;</td>
-<td>
- <%= submit_tag "Send Message" %>
-</td>
-</tr>
-</table>
-        <% end %>
-      </div>
-    </fieldset>
+<p class="title" align="center">
+  <%= _ "Send a message to" %> <%= @contact.listing.name %>
+</p>
+<fieldset>
+  <div id="center_form">
+    <% if @contact.errors.size == 0 -%>
+    <h3 align="center"><%= _ "Please fill in the following fields" %>:</h3>
+    <% else -%>
+    <%   @contact.errors.each do |k, msg| =%>
+    <h4 style="color:red;"><%= msg %></h3>
+    <%   end -%>
+    <% end -%>
+    <%= form_for(:contact, :url => "contact") do |f| %>
+    <table>
+      <tr>
+	<td><b><%= _ "Your name" %>:</b></td>
+	<td>
+	  <%= display_contact(f.text_field(:name, :size => 32, :maxlength => 32), :name) %>
+	</td>
+      </tr>
+      <tr>
+	<td><b><%= _ "Your return email address" %>:</b></td>
+	<td>
+	  <%= display_contact(f.text_field(:email, :size => 32, :maxlength => 32), :email) %>
+	</td>
+      </tr>
+      <tr><td><b><%= _ "Your phone number (optional)" %>:</b></td>
+	<td>
+	  <%= display_contact(f.text_field(:phone, :size => 32, :maxlength => 32), :phone) %>
+	</td>
+      </tr>
+      <tr>
+	<td>&nbsp;</td>
+	<td>
+	  <%= submit_tag _ "Send Message" %>
+	</td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</fieldset>
     
     <p>
     <a href="<%= @path_prefix %>">Return to rideboard</a>
