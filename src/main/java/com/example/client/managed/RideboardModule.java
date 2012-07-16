@@ -1,6 +1,6 @@
 package com.example.client.managed;
 
-import com.example.client.RideboardEntryPoint.RideboardApplication;
+import com.example.client.RideboardApplication;
 import com.example.client.SessionActivityPlaceActivityMapper;
 import com.example.client.activities.LoginActivity;
 import de.mkristian.gwt.rails.Application;
