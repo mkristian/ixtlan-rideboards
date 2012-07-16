@@ -6,8 +6,8 @@
   <br/>
   <% end -%>
   <% if @board.venue.languages.size > 1 -%>
-  <%   for language in @board.venue.languages - %>
-  <a href="<%= "#{@path_prefix}/../#{language.code[0,2]}" %>"><%= language.lang %></a>
+  <%   for language in @board.venue.languages -%>
+  <a href="<%= "#{@path_prefix}/../../../#{language}/#{@board.venue.name}/#{@board.name}" %>"><%= language%></a>
   <%   end -%>
   <% end -%>
   <% if @board.venue.boards.size > 1 %>
@@ -17,7 +17,7 @@
   <%       if board == @board -%>
   <span class="inactive"><%= board.name.capitalize %> <%= _ "Rideboard" %></span>	     	  
   <%       else -%>
-  <a href="<%= "#{board.id}" %>"><%= board.name.capitalize %> <%= _ "Rideboard" %></a>
+  <a href="<%= "#{board.name}" %>"><%= board.name.capitalize %> <%= _ "Rideboard" %></a>
   <%       end -%>
   |
   <%     end -%>

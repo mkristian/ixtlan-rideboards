@@ -67,7 +67,12 @@ class Public::ListingsController < Public::ApplicationController
      
     if @listing
       if @listing.valid?
-        @listing.send_confirmation(@base_url, @lang)
+        url = url_for(:venue => @board.venue.name, 
+                      :board => @board.name, 
+                      :lang => @lang, 
+                      :controller => 'public/boards', 
+                      :action => :show)
+        @listing.send_confirmation(url, @lang)
         render :template => "public/created"
       else
         render :template => "public/new"

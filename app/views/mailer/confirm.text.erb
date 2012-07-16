@@ -1,37 +1,34 @@
-Hello <%= @listing.name %>,
+<% require 'paragraph' -%>
+<%= _ 'Hello' %> <%= @listing.name %>,
 
-Your name has been added to our online rideshare board at: 
+<%= _ 'Your name has been added to our online rideshare board at' %>:
 <%= @board_url %>
 <% if @listing.board.venue.password %>
-The password to access the rideboard is: <%= @listing.board.venue.password %>
+
+<%= _ 'The password to access the rideboard is' %>: <%= @listing.board.venue.password %>
 <% end %>
-You may have added your name yourself, or we may have added your name for you
-if you noted on your application that you could give other participants a ride
-to the course. The following information is listed:
+<% # the fullstop after 'course' needs to be outside - otherwise _() returns [nil] -%>
 
-Name: <%= @listing.name %>
-Destination: <%= @listing.board.fullname %>
-Location: <%= @listing.location %>
-Type: <%= "Offer Ride" if @listing.driver %><%= "Request Ride" unless @listing.driver %>
-Date: <%= @date %>
+<%= Paragraph.format( _('You may have added your name yourself, or we may have added your name for you if you noted on your application that you could give other participants a ride to the course.') + ' ' +  _('The following information is listed'), 60) %>:
 
-Visitors to the online rideshare board will be able to send you an email to
-coordinate sharing a ride with you.  Your email address will not be visible to
-them when they do so. You can choose whether to reply to any requests you
-receive. You can also use this page to send such message to others. You can
-remove yourself from the list at any time by clicking on the 'X' in the Delete
-Entry column, and entering this removal code: <%=h @listing.password %>
+<%= _ 'Name' %>: <%= @listing.name %>
+<%= _ 'Destination' %>: <%= @listing.board.fullname %>
+<%= _ 'Location' %>: <%= @listing.location %>
+<%= _ 'Type' %>: <% if @listing.driver -%>
+<%= _ "Offer Ride" %>
+<% else -%>
+<%= _ "Request Ride" %>
+<% end -%>
+<%= _ 'Date' %>: <%= @date %>
 
-Please let us know if you have any questions.
+<%= Paragraph.format( _("Visitors to the online rideshare board will be able to send you an email to coordinate sharing a ride with you. Your email address will not be visible to them when they do so. You can choose whether to reply to any requests you receive. You can also use this page to send such message to others. You can remove yourself from the list at any time by clicking on the 'X' in the Delete Entry column, and entering this removal code:"), 60) %> <%=h @listing.password %>
 
-With best wishes,
-<%= @listing.board.venue.fullname %> Rideshare
+<%= _ 'Please let us know if you have any questions.' %>
+
+<%= _ 'With best wishes,' %>
+<%= @listing.board.venue.fullname %> <%= _ 'Rideshare' %>
 <%= @listing.board.venue.email %>
 
 --------------------------------------------------------------------------
-This rideshare board is hosted and maintained by volunteers solely for the
-purpose of facilitating rides to Vipassana courses. It is available as a
-service to students who wish to participate. We cannot guarantee a ride, and
-assume no responsibility whatsoever for the safety of participants or for any
-other issues arising as a result of participation.
+<%= Paragraph.format( _('This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to Vipassana courses.') + ' ' +  _('It is available as a service to students who wish to participate.') + ' ' + _('We cannot guarantee a ride, and assume no responsibility whatsoever for the safety of participants or for any other issues arising as a result of participation.'), 60) %>
 --------------------------------------------------------------------------
