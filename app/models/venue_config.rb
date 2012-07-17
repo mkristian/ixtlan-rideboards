@@ -2,34 +2,30 @@ class VenueConfig
   include DataMapper::Resource
 
   FORMAT_MESSAGE = "must be of the format: http://*.dhamma.org/* or https://*.dhamma.org/*"
-  URL_PATTERN = "^https?:\/\/(\w+:\w+@)?([a-z-]+[.])+dhamma.org\/?.*$|^\s*$"
+  URL_PATTERN = /^https?:\/\/(\w+:\w+@)?([a-z-]+[.])+dhamma.org\/?.*$|^\s*$/
+  PATTERN = /^[^<'&">]*$/
 
   property :id, Serial
 
-  property :date_format, String, :required => true, :format => /^[^<'&">]*$/, :length => 255, :default => "%Y-%M-%d"
-  property :home_url, String, :required => true, :format => /#{URL_PATTERN}/, :length => 255, :message => FORMAT_MESSAGE
-  property :schedule_url, String, :required => true, :format => /#{URL_PATTERN}/, :length => 255, :message => FORMAT_MESSAGE
-  property :checklist_url, String, :required => false, :format => /#{URL_PATTERN}/, :length => 255, :message => FORMAT_MESSAGE
-  property :iframe_url, String, :required => false, :format => /#{URL_PATTERN}/, :length => 255, :message => FORMAT_MESSAGE
+  property :date_format, String, :required => true, :format => PATTERN, :length => 255, :default => "%Y-%M-%d"
+  property :home_url, String, :required => true, :format => :url, :length => 255
+  property :schedule_url, String, :required => false, :format => :url, :length => 255
+  property :checklist_url, String, :required => false, :format => :url, :length => 255
+  property :iframe_url, String, :required => false, :format => :url, :length => 255
 
-#TODO contextualze valdation with URL_PATTERN
-
-#  property :venue_id, Integer, :required => true
-#  property :locale_id, Integer, :required => true
-  belongs_to :locale#, :required => true
-  belongs_to :venue#, :required => true
+  belongs_to :locale
+  belongs_to :venue
 
   timestamps :at
 
   belongs_to :modified_by, 'User'
 
-  # require 'dm-serializer'
-  # alias :to_x :to_xml_document
-  # def to_xml_document(opts = {}, doc = nil)
-  #   unless(opts[:methods])
-  #     opts.merge!({:methods => [:updated_by], :updated_by => {:methods => [], :exclude => [:created_at, :updated_at]}})
-  #   end
-  #   to_x(opts, doc)
-  # end
+  validates_format_of :date_format, :with => PATTERN, :when => [ :strict ]
+  validates_format_of :home_url, :schedule_url, :iframe_url, :checklist_url, :with => URL_PATTERN, :message => FORMAT_MESSAGE  :when => [ :strict ]
+  validates_presence_of :date_format, :home_url, :center_id, :modified_by_id, :when => [ :strict ]
 
+  alias :venue_valid? :valid?
+  def valid?
+    venue_valid?((venue && venue.strict_domain_names) ? :strict : :default)
+  end
 end

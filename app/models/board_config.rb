@@ -2,12 +2,10 @@ class BoardConfig
   include DataMapper::Resource
 
   property :id, Serial
-  property :map_url, String, :required => false, :format => /#{VenueConfig::URL_PATTERN}/, :length => 255, :message => VenueConfig::FORMAT_MESSAGE
-  property :directions_url, String, :required => false, :format => /#{VenueConfig::URL_PATTERN}/, :length => 255, :message => VenueConfig::FORMAT_MESSAGE
- property :transportation_url, String, :required => false, :format => /#{VenueConfig::URL_PATTERN}/, :length => 255, :message => VenueConfig::FORMAT_MESSAGE
+  property :map_url, String, :required => false, :format => :url, :length => 255
+  property :directions_url, String, :required => false, :format => :url, :length => 255
+ property :transportation_url, String, :required => false, :format => :url, :length => 255
  
-  #property :board_id, Integer, :required => true
-  #property :locale_id, Integer, :required => true
   belongs_to :locale
   belongs_to :board
 
@@ -15,13 +13,10 @@ class BoardConfig
 
   belongs_to :modified_by, 'User'
 
-  # require 'dm-serializer'
-  # alias :to_x :to_xml_document
-  # def to_xml_document(opts = {}, doc = nil)
-  #   unless(opts[:methods])
-  #     opts.merge!({:methods => [:updated_by], :updated_by => {:methods => [], :exclude => [:created_at, :updated_at]}})
-  #   end
-  #   to_x(opts, doc)
-  # end
+  validates_format_of :map_url, :directions_url, :transportation_url, :with => VenueConfig::URL_PATTERN, :message => VenueConfig::FORMAT_MESSAGE  :when => [ :strict ]
 
+  alias :venue_valid? :valid?
+  def valid?
+    venue_valid?((board && board.venue.strict_domain_names) ? :strict : :default)
+  end
 end
