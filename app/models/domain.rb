@@ -1,4 +1,4 @@
-class Center
+class Domain
 
   include DataMapper::Resource
 

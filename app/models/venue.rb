@@ -16,13 +16,13 @@ class Venue
 
   belongs_to :modified_by, 'User'
 
-  belongs_to :center
+  belongs_to :domain
 
   has n, :venue_configs
   has n, :boards, :order => :position
 
   validates_format_of :email, :with => /^rides@([a-z0-9-]+[.])+dhamma.org$/, :message => "must be of format: rides@*dhamma.org",  :when => [ :strict ]
-  validates_presence_of :fullname, :email, :enabled, :strict_domain_names, :center_id, :modified_by_id, :when => [ :strict ]
+  validates_presence_of :fullname, :email, :enabled, :strict_domain_names, :domain_id, :modified_by_id, :when => [ :strict ]
 
   alias :venue_valid? :valid?
   def valid?
@@ -84,7 +84,7 @@ CODE
   end
 
   def name
-    center.name
+    domain.name
   end
   
   def languages
@@ -94,6 +94,6 @@ CODE
   end
 
   def self.for_name(name)
-    Venue.first(Venue.center.name => name, :enabled => true)
+    Venue.first(Venue.domain.name => name, :enabled => true)
   end
 end
