@@ -1,15 +1,18 @@
+body {
+    background-color: #ccf;
+    font-family: Arial,sans-serif;
+    margin: 0;
+}
+
 .gwt-rails-loading, .gwt-rails-info, .gwt-rails-warn, .gwt-rails-error {
     background-color: lightgoldenRodYellow;
     border: 1px solid darkgoldenrod;
     color: darkgoldenrod;
     font-family: verdana,arial,helvetica,sans-serif;
-    margin-left: 35%;
-    margin-right: 35%;
     opacity: 0.9;
     overflow: auto;
     padding: 0.5em 5%;
-    position: fixed;
-    top: 3em;
+    margin-top: .1em;
     width: 30%;
 }
 .gwt-rails-info {
@@ -28,49 +31,73 @@
 }
 .gwt-rails-loading {
     background-color: lightgoldenRodYellow;
-    border: 0 none;
     margin-left: 40%;
+    width: 4em;
     margin-right: 40%;
-    opacity: 0.8;
+    font-size: 0.8em;
     padding: 0 0.3em;
-    top: 0;
-    width: auto;
+    border: 1px solid darkgoldenrod;
 }
-.gwt-rails-breadcrumbs * {
-    display: inline;
-    float: right;
-}
-.gwt-rails-breadcrumbs * {
-    margin-left: 1em;
-}
-.gwt-rails-model-signature {
-    background-color: #CCCCFF;
-    border-radius: 1em 1em 1em 1em;
-    height: 1em;
-    padding-left: 1em;
-    padding-top: 0.1em;
-}
-.gwt-rails-menu * {
-    display: inline;
-    float: left;
-}
+
 .gwt-rails-display, .gwt-rails-model-signature, .gwt-rails-model-fields {
     clear: both;
 }
+
+/* main display */
+.gwt-rails-display {
+    background-color: #fff;
+    border: 1px solid darkblue;
+    margin: 0;
+    padding-top: 1%;
+    margin-right: 1%;
+    padding-bottom: 1%;
+}
+.gwt-rails-display .gwt-Label {
+    background-color: #ccf;
+    text-align: center;
+    font-weight: bolder;
+}
+
+/* signature */
+.gwt-rails-model-signature {
+    background-color: #ccf;
+    padding-left: .5em;
+}
 .gwt-rails-model-signature * {
     display: inline;
-    float: left;
-    font-size: 0.7em;
-    margin-right: 0.3em;
+    font-size: 0.6em;
+    padding-right: 0.3em;
+    margin:0;
 }
 .gwt-rails-model-signature span {
     margin-right: 1em;
 }
+
+/* breadcrumbs/header */
+.gwt-rails-breadcrumbs {
+    height: 100%;
+    margin-top: 2em;
+}
+
+.gwt-rails-breadcrumbs * {
+    display: inline;
+    float: right;
+    margin-left: 1em;
+    font-size: .7em;
+}
+
+.gwt-rails-breadcrumbs div {
+    margin: .5em;
+    margin-right: 1em;
+}
+
+/* form fields */
+.gwt-rails-model-fields {
+    padding-top: 0.5em;
+}
 .gwt-rails-model-fields > div > * {
     display: block;
-}
-.gwt-rails-model-signature, .gwt-rails-buttons, .gwt-rails-display {
-    margin-top: 0.3em;
+    margin-left: 3%;
 }
 .gwt-rails-model-fields .gwt-TextBox, .gwt-rails-model-fields .gwt-TextArea {
     width: 30%;
@@ -78,152 +105,79 @@
 .gwt-rails-model-fields .gwt-TextArea {
     height: 6em;
 }
-.users-links > div {
-    border-left: 1px solid darkblue;
-    border-right: 1px solid darkblue;
-    display: inline;
-    font-size: 0.9em;
-    margin: 0 0 0 -1px;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-body {
-    background-color: #CCCCFF;
-    font-family: Arial,sans-serif;
-}
-.gwt-Button:hover {
-    border: 0.1em solid #FFFFFF;
-}
-.gwt-TextBox:hover, .gwt-PasswordTextBox:hover, .gwt-rails-model-fields .gwt-TextBox:hover, .gwt-rails-model-fields .gwt-TextArea:hover {
-    background-color: #FFFFFF;
-}
-.gwt-Button {
-    background-color: #AAAAFF;
-    border: 0.1em solid darkblue;
-    border-radius: 0.3em 0.3em 0.3em 0.3em;
-    color: #111155;
-    font-weight: bold;
-    margin: 0.2em;
-    padding: 0.3em 0.8em;
-}
-.reset {
-    border-top: 1px solid black;
-    margin-top: 1.5em;
-    padding-top: 1.5em;
-}
-.display {
-    background-color: #7777FF;
-    border: 1px solid darkblue;
-    border-radius: 1em 1em 1em 1em;
-    clear: both;
-    margin-left: 20%;
-    margin-top: 5em;
-    opacity: 1;
-    padding: 2em;
-    width: 15em;
-}
-#header-text, img {
-    float: left;
-    margin-bottom: 1em;
-    margin-right: 1em;
-}
-#header {
-    background-color: #CCCCFF;
-    color: #000077;
-    font-size: 2.5em;
-    height: 2em;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-body {
-    margin: 0;
-}
 .gwt-TextBox, .gwt-PasswordTextBox {
-    background-color: #CCCCFF;
+    background-color: #ccf;
     border: 1px solid darkblue;
     border-radius: 0.3em 0.3em 0.3em 0.3em;
     margin: 0.2em;
     padding: 0.3em;
 }
-.gwt-rails-breadcrumbs {
-    border-bottom: 1px solid darkblue;
-    float: right;
-    height: 2em;
-    margin-left: 20%;
-    position: fixed;
-    top: 3em;
-    width: 80%;
-}
-.gwt-rails-breadcrumbs div {
-    font-size: 1em;
-    margin: 0.5em;
-}
-.gwt-rails-display> * {
-}
-.gwt-rails-display {
-    border-bottom: 1px solid darkblue;
-    border-left: 1px solid darkblue;
-    margin: 0;
-    position: absolute;
-    top: 5em;
-    width: 78%;
-    z-index: -1;
-    margin-left: 20%;
-    background-color: #fff;
-    padding: 1%;
-}
-.gwt-rails-application-links {
-    background-color: #CCCCFF;
-    border-top: 1px solid darkblue;
-    bottom: 0;
-    clear: both;
-    padding: 0.2em;
-    position: fixed;
-    width: 100%;
-    height: 1em;
-}
-.gwt-rails-menu {
-    font-size: 0.9em;
-    margin-top: 6em;
-    position: fixed;
-    width: 20%;
-}
-.gwt-rails-menu * {
-    clear: both;
-    display: block;
-    float: right;
-    margin-right: 1em;
-    padding: 0.1em;
-    text-align: right;
-}
-.gwt-rails-model-fields .gwt-TextArea:hover {
-    background-color: #FFFFFF;
-}
-.gwt-rails-display .gwt-Label {
-    background-color: #CCCCFF;
-    border-radius: 2em 2em 2em 2em;
-    text-align: center;
-}
 .gwt-rails-model-fields .gwt-TextArea, .gwt-rails-model-fields .gwt-TextBox {
-    background-color: #CCCCFF;
+    background-color: #ccf;
     border: 1px solid darkblue;
     border-radius: 0.5em 0.5em 0.5em 0.5em;
     width: 100%;
+}
+.gwt-PasswordTextBox:hover,
+.gwt-TextBox:hover{
+    background-color: #ddf;
+}
+.gwt-PasswordTextBox:focus,
+.gwt-TextBox:focus{
+    background-color: #fff;
+}
+.gwt-rails-model-fields .gwt-TextBox:hover, 
+.gwt-rails-model-fields .gwt-TextArea:hover {
+    background-color: #ddf;
+}
+.gwt-rails-model-fields .gwt-TextBox:focus, 
+.gwt-rails-model-fields .gwt-TextArea:focus {
+    background-color: #eef;
 }
 .gwt-rails-model-fields div {
     float: left;
     margin-right: 3%;
     padding-bottom: 0.5em;
-    width: 47%;
+    width: 46%;
+}
+.gwt-rails-model-fields label {
+    margin-left: 3%;
+}
+
+/* buttons */
+.gwt-Button {
+    background-color: #aaf;
+    border: 0.1em solid darkblue;
+    border-radius: 0.3em 0.3em 0.3em 0.3em;
+    color: #115;
+    font-weight: bold;
+    padding: 0.2em 0.8em;
+}
+.gwt-Button:hover {
+    border: 0.1em solid #fff;
 }
 .gwt-rails-buttons {
-    background-color: #7777FF;
-    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #77f;
     clear: both;
+    padding-left: 3%;
+}
+
+/* navgation left side */
+.gwt-rails-menu {
+    margin-right: 1em;
+
+}
+.gwt-rails-menu * {
+    clear: both;
+    display: block;
+    float: right;
     padding: 0.2em;
+}
+
+/* footer */
+.gwt-rails-application-links {
+    background-color: #ccf;
+    border-top: 1px solid darkblue;
 }
 .gwt-rails-application-links a {
     font-size: 0.8em;
@@ -231,6 +185,24 @@ body {
     padding-left: 1em;
     text-decoration: none;
 }
-.gwt-rails-model-fields {
-    padding-top: 0.5em;
+
+/* login screen and general header */
+.separator {
+    border-top: 1px solid black;
+    margin-top: 1.5em;
+    padding-top: 1.5em;
+}
+.display {
+    background-color: #77f;
+    border: 1px solid darkblue;
+    border-radius: 1em;
+    clear: both;
+    opacity: 1;
+    padding: 2em;
+    width: 15em;
+}
+#header-text, img {
+    float: left;
+    margin-right: 1em;
+    font-size: 2.5em;
 }

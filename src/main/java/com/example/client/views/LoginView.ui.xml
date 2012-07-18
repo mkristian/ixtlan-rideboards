@@ -13,6 +13,7 @@
     <g:PasswordTextBox ui:field="password" name="password"/>
     <g:HTML></g:HTML>
     <g:Button ui:field="loginButton">login</g:Button>
+    <g:HTML styleName="separator" />
     <g:HTML><label name="username">Username or Email</label></g:HTML>
     <g:TextBox ui:field="username" name="username"/>
     <g:HTML></g:HTML>

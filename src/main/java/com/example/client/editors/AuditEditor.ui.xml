@@ -26,7 +26,9 @@
         <g:TextBox ui:field="message"/>
       </g:HTMLPanel>
     </g:FlowPanel>
-
+  <g:FlowPanel styleName="gwt-rails-model-fields">
+      </g:FlowPanel>
+      
   </g:FlowPanel>
 
 </ui:UiBinder>
