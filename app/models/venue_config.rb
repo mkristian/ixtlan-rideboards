@@ -21,7 +21,7 @@ class VenueConfig
   belongs_to :modified_by, 'User'
 
   validates_format_of :date_format, :with => PATTERN, :when => [ :strict ]
-  validates_format_of :home_url, :schedule_url, :iframe_url, :checklist_url, :with => URL_PATTERN, :message => FORMAT_MESSAGE  :when => [ :strict ]
+  validates_format_of :home_url, :schedule_url, :iframe_url, :checklist_url, :with => URL_PATTERN, :message => FORMAT_MESSAGE, :when => [ :strict ]
   validates_presence_of :date_format, :home_url, :center_id, :modified_by_id, :when => [ :strict ]
 
   alias :venue_valid? :valid?

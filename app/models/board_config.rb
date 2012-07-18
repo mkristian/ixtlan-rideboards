@@ -13,7 +13,7 @@ class BoardConfig
 
   belongs_to :modified_by, 'User'
 
-  validates_format_of :map_url, :directions_url, :transportation_url, :with => VenueConfig::URL_PATTERN, :message => VenueConfig::FORMAT_MESSAGE  :when => [ :strict ]
+  validates_format_of :map_url, :directions_url, :transportation_url, :with => VenueConfig::URL_PATTERN, :message => VenueConfig::FORMAT_MESSAGE, :when => [ :strict ]
 
   alias :venue_valid? :valid?
   def valid?

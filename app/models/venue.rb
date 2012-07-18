@@ -21,7 +21,7 @@ class Venue
   has n, :venue_configs
   has n, :boards, :order => :position
 
-  validates_format_of :email, :with => /^rides@([a-z0-9-]+[.])+dhamma.org$/, :message => "must be of format: rides@*dhamma.org",  :when => [ :strict ]
+  validates_format_of :email, :with => /^rides@([a-z0-9-]+[.])+dhamma.org$/, :message => "must be of format: rides@*dhamma.org", :when => [ :strict ]
   validates_presence_of :fullname, :email, :enabled, :strict_domain_names, :domain_id, :modified_by_id, :when => [ :strict ]
 
   alias :venue_valid? :valid?
