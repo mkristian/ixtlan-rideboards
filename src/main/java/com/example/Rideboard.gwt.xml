@@ -6,6 +6,8 @@
 
   <inherits name="com.google.gwt.inject.Inject"/>
 
+  <inherits name="com.google.gwt.resources.Resources" />
+
   <inherits name="org.fusesource.restygwt.RestyGWT" />
 
   <inherits name="de.mkristian.gwt.RailsGWT" />

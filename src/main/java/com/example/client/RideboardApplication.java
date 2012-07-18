@@ -19,7 +19,7 @@ import de.mkristian.gwt.rails.Application;
 import de.mkristian.gwt.rails.Notice;
 
 public class RideboardApplication extends Composite implements Application {
-
+    
     interface Binder extends UiBinder<Widget, RideboardApplication> {}
 
     private static Binder BINDER = GWT.create(Binder.class);
@@ -49,11 +49,6 @@ public class RideboardApplication extends Composite implements Application {
         LayoutPanel root = RootLayoutPanel.get();
         root.add(notice);
         root.setWidgetLeftWidth(notice, 25, Unit.PCT, 50, Unit.PCT);
-//        DockLayoutPanel panel = new DockLayoutPanel(Unit.EM);
-//        panel.addNorth(header, 4);
-//        panel.addSouth(footer,1);
-//        panel.addWest(navigation, 10);
-//        panel.add(display);
         root.add(this.asWidget());
     }
 }
