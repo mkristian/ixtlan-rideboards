@@ -1,6 +1,6 @@
-module Encoding
-  class CompatibilityError < StandardError; end
-end
+#module Encoding
+#  class CompatibilityError < StandardError; end
+#end
 class Venue
   include DataMapper::Resource
 
