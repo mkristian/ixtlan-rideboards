@@ -17,7 +17,6 @@ class Venue
   belongs_to :modified_by, 'User'
 
   belongs_to :domain
-  property :domain_id, Integer, :required => false, :default => 1
 
   has n, :venue_configs
   has n, :boards, :order => :position
