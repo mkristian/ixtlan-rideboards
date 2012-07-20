@@ -25,7 +25,7 @@ class VenueConfig
   validates_presence_of :date_format, :home_url, :center_id, :modified_by_id, :when => [ :strict ]
 
   alias :venue_valid? :valid?
-  def valid?
-    venue_valid?((venue && venue.strict_domain_names) ? :strict : :default)
+  def valid?(context = nil)
+    venue_valid?(context || ((venue && venue.strict_domain_names) ? :strict : :default))
   end
 end
