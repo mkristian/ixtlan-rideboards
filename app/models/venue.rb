@@ -10,7 +10,7 @@ class Venue
   property :password, String, :required => false, :format => /^[^<'&">]*$/, :length => 255
   property :bcc, Boolean, :required => false, :default => false
   property :enabled, Boolean, :required => true
-  property :strict_domain_names, Boolean, :required => true
+  property :strict_domain_names, Boolean, :required => true, :default => true
 
   timestamps :at
 
