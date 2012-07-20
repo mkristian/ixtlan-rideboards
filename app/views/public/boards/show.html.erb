@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" class="head">
   <% unless @board.venue.iframe_url? -%>
   <%= image_tag "bodhismall2.gif", :align => :bottom, :width => 20, :height => 22, :border => 0, :alt => 'bodhi leaf' %>
   <span class="title"><%= @board.venue.fullname %> <%= _ "Rideshare Board" %></span>
@@ -15,9 +15,9 @@
   <%   for board in @board.venue.boards -%>
   <%     if board.enabled -%>
   <%       if board == @board -%>
-  <span class="inactive"><%= board.name.capitalize %> <%= _ "Rideboard" %></span>	     	  
+  <span class="inactive"><i><%= board.name.capitalize %></i> <%= _ "Rideboard" %></span>
   <%       else -%>
-  <a href="<%= "#{board.name}" %>"><%= board.name.capitalize %> <%= _ "Rideboard" %></a>
+  <a href="<%= "#{board.name}" %>"><i><%= board.name.capitalize %></i> <%= _ "Rideboard" %></a>
   <%       end -%>
   |
   <%     end -%>

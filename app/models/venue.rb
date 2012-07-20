@@ -17,6 +17,7 @@ class Venue
   belongs_to :modified_by, 'User'
 
   belongs_to :domain
+  property :domain_id, Integer, :required => false, :default => 1
 
   has n, :venue_configs
   has n, :boards, :order => :position
@@ -25,8 +26,8 @@ class Venue
   validates_presence_of :fullname, :email, :enabled, :strict_domain_names, :domain_id, :modified_by_id, :when => [ :strict ]
 
   alias :venue_valid? :valid?
-  def valid?
-    venue_valid?(strict_domain_names ? :strict : :default)
+  def valid?(context = nil)
+    venue_valid?(context || (strict_domain_names ? :strict : :default))
   end
 
   # sets a state of the current language for the venue, this allows

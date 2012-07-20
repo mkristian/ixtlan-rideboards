@@ -6,7 +6,7 @@ font-family: tahoma, verdana, sans-serif;
 
 body, p, ol, ul, td {
   font-size:   13px;
-  line-height: 18px;
+  line-height: 1.5em;
 }
 
 pre {
@@ -16,32 +16,32 @@ pre {
 }
 
 A:link {
-font-size:14px; 
+font-size:1.1em; 
 font-weight:bold; 
 color:#003399;
 }
 
 A:active {
-font-size:14px; 
+font-size:1.1em; 
 font-weight:bold; 
 color:#336699;
 }
 
 A:visited {
-font-size:14px; 
+font-size:1.1em; 
 font-weight:bold; 
 color:#336699;
 }
 
 A:hover {
-font-size: 14px; 
+font-size: 1.1em; 
 font-weight:bold; 
 color:red; 
 text-decoration: underline;
 }
 
 .inactive{
-font-size: 14px;
+font-size: 1.1em;
 font-weight:bold;
 color: darkred;
 }
@@ -142,17 +142,20 @@ clear: both;
 float: left;
 }
 
+.head { 
+font-size:1.2em
+ }
 .title {
 color:#808000; 
 text-decoration: none; 
-font-size: 20px; 
+font-size: 2em; 
 font-weight: normal;
 text-align:center;
 }
 
 .medtext {
 color:#000000; 
-font-size: 12px; 
+font-size: 1em; 
 font-weight: normal;
 }
 
