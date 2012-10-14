@@ -41,6 +41,7 @@ class Public::ApplicationController < ActionController::Base
           if FastGettext.translation_repositories.key?(venue.name)
             FastGettext.text_domain = venue.name
           end
+          Listing.cleanup
           true
         else
           @lang = venue.default_locale

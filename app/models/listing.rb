@@ -21,6 +21,15 @@ class Listing
 
   belongs_to :board
 
+  def self.cleanup
+    begin
+      Listing.all(:ridedate.lt => DateTime.now).destroy!
+    rescue Exception => e
+      # TODO log exception
+      puts e.message
+    end
+  end
+
   def send_confirmation(base_url, lang)
     url = board.venue.iframe_url
     if url.blank? 
@@ -38,30 +47,6 @@ class Listing
       
     Mailer.remind(lang, self, url).deliver
   end
-
-  # require 'dm-serializer'
-  # alias :to_x :to_xml_document
-  # def to_xml_document(opts = {}, doc = nil)
-  #   opts.merge!({ :skip_types => true,
-  #                 :skip_empty_tags => true
-  #               })
-  #   unless(opts[:methods])
-  #     opts.merge!({ :methods => [:board],
-  #                   :board => {
-  #                     :methods => [:listings],
-  #                     :listings => {
-  #                       :methods => [],
-  #                       :exclude => [:password, :board_id, :created_at, :updated_at, :driver, :ridedate, :name, :email, :location]
-  #                     },
-  #                     :exclude => [:created_at, :updated_at]
-  #                   }
-  #                 })
-  #   end
-  #   unless(opts[:exclude])
-  #     opts.merge!({:exclude => [:password, :board_id]})
-  #   end
-  #   to_x(opts, doc)
-  # end
 
   def reset_password
     if(email == "test@rides.server.dhamma.org")
