@@ -1,14 +1,14 @@
 <% if @board.map_url? or @board.directions_url? or @board.transportation_url? %>
 <p align="center" style="margin-top:-1em;">
-<%  if @board.map_url? -%>
+<% if @board.map_url? -%>
 | <%= link_to(_("Location Map"), @board.map_url) -%>
-< end -%>
-<%  if @board.map_url? -%>
+<% end -%>
+<% if @board.map_url? -%>
 | <%= link_to(_("Directions"), @board.directions_url) -%>
-< end -%>
-<%  if @board.transportation_url? -%>
+<% end -%>
+<% if @board.transportation_url? -%>
 | <%= link_to(_("Public Transportation Options"), @board.transportation_url) -%>
-< end -%>
+<% end -%>
  |
 </p>
 <% end %>
@@ -170,13 +170,13 @@
 <% unless @board.venue.iframe_url? %>
 <p align="center"><img src="/images/thinrule.gif" width="100%" height="7" alt="thinrule"/></p>
 <p align="center">
-<% if @board.venue.home_url? %>
+<% if @board.venue.home_url? -%>
 | <%= link_to(_("Home"), @board.venue.home_url) -%>
 <% end -%>
-<% if @board.venue.schedule_url? %>
+<% if @board.venue.schedule_url? -%>
 | <%= link_to(_("Course Schedule"), @board.venue.schedule_url) -%>
 <% end -%>
-<% if @board.venue.checklist_url? %>
+<% if @board.venue.checklist_url? -%>
 | <%= link_to(_("Course Checklist"), @board.venue.checklist_url) -%>
 <% end -%>
 <% if @board.venue.home_url? or @board.venue.schedule_url? or @board.venue.checklist_url? -%>
