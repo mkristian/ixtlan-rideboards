@@ -33,9 +33,11 @@ class Venue
   # the getter of the respective url to return the right language dependent url
   def locale=(code, create = false)
     require 'venue_config'
-    @lang = VenueConfig.first(:venue => self, :locale => code)
+    # TODO maybe code is a locale ?!?
+    @lang = VenueConfig.first(:venue => self, :locale => { :code => code })
 
     # create a new one if needed and wanted
+    # TODO with create code is the locale ?!?
     @lang = VenueConfig.create(:venue => self, :locale => code) if @lang.nil? && create
 
     if @lang
@@ -55,7 +57,7 @@ CODE
     if name =~ /_url$/
 class_eval <<-CODE, __FILE__, __LINE__
       def #{name}?
-        !(@lang && @lang.#{name}).blank?
+        !(@lang && @lang.#{name}.blank?)
       end
 CODE
     end
