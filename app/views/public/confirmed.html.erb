@@ -2,7 +2,7 @@
 <fieldset>
   <div id="center_form">
     <h3 align="center">
-      <% id @listing.driver -%>
+      <% if @listing.driver -%>
       <%= _ "Ride Offer for" %> '<%= @listing.name %>' <%= _ "was removed" %>.
       <% else -%>
       <&= _ "Ride Request for" %> '<%= @listing.name %>' <%= _ "was removed" %>.
