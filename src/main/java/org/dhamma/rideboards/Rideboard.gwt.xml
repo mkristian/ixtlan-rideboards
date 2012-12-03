@@ -1,0 +1,18 @@
+<module rename-to='Rideboard'>
+
+  <inherits name='com.google.gwt.user.User'/>
+
+  <inherits name='com.google.gwt.activity.Activity'/>
+  <inherits name='com.google.gwt.place.Place'/>
+
+  <inherits name='com.google.gwt.inject.Inject'/>
+
+  <inherits name='org.fusesource.restygwt.RestyGWT'/>
+
+  <inherits name='de.mkristian.gwt.RailsGWT'/>
+
+  <entry-point class='org.dhamma.rideboards.client.RideboardEntryPoint' />
+
+  <stylesheet src='../stylesheets/rideboard.css'/>
+
+</module>
