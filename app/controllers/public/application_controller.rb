@@ -37,10 +37,7 @@ class Public::ApplicationController < ActionController::Base
                                  :board => @board.name,
                                  :lang => @lang)
           @board.venue.locale = @lang
-          FastGettext.set_locale(@lang)
-          if FastGettext.translation_repositories.key?(venue.name)
-            FastGettext.text_domain = venue.name
-          end
+          Rideboards::Application.config.gettext.use(@lang, venue.domain.name)
           Listing.cleanup
           true
         else

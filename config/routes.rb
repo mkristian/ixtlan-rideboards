@@ -1,4 +1,6 @@
-Rideboard::Application.routes.draw do
+Rideboards::Application.routes.draw do
+  resource :confguration
+
   resource :configuration
 
   resources :errors

@@ -8,7 +8,7 @@
   <%= csrf_meta_tag %>
   <%= stylesheet_link_tag 'rides' %>
   <% if @board %>
-  <link rel="alternate" type="application/atom+xml" title="<%= @board.name.capitalize + ' ' + 'Rideboard' + ' - ' + @board.venue.fullname %>" href="<%= @path_prefix %>.rss">
+  <link rel="alternate" type="application/atom+xml" title="<%= @board.name.capitalize + ' ' + 'Rideboards' + ' - ' + @board.venue.fullname %>" href="<%= @path_prefix %>.rss">
   <% end %>
 </head>
 <body>

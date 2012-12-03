@@ -5,7 +5,7 @@ class NewLocale
     @lang = lang
     @file = "config/locales/#{lang}.yml"
     @trans = if File.exists? @file
-               YAML.load_file(@file)["en"]
+               YAML.load_file(@file)[lang]
              else
                {}
              end

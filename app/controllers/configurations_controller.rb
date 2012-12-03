@@ -1,39 +1,26 @@
 class ConfigurationsController < ApplicationController
 
-  before_filter :cleanup_params
-
   private
 
-  def cleanup_params
+  def cleanup
     filter.filter(params[:configuration])
   end
 
   public
 
   # GET /configurations
-  # GET /configurations.xml
-  # GET /configurations.json
   def show
     @configuration = serializer(::Configuration.instance)
-
-    respond_with(@configuration)
+    respond_with @configuration
   end
 
-  # PUT /configurations
-  # PUT /configurations.xml
-  # PUT /configurations.json
+  # PUT /configurations/1
   def update
-    if @configuration = serializer(::Configuration.optimistic_get(filter.updated_at, 
-                                                                  ::Configuration.instance.id))
+    @configuration = serializer(::Configuration.optimistic_get!(updated_at, ::Configuration.instance.id))
+    @configuration.attributes = filter.params
 
-      @configuration.attributes = filter.params
-      @configuration.modified_by = current_user if @configuration.dirty?
-      
-      @configuration.save
-      
-      respond_with(@configuration)
-    else
-      respond_with(nil, :status => :conflict)
-    end
+    @configuration.save
+
+    respond_with @configuration
   end
 end

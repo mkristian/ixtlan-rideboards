@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version => "1.0" 
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title @board.name.capitalize + " " + "Rideboard" + " - " + @board.venue.fullname
+    xml.title @board.name.capitalize + " " + "Rideboards" + " - " + @board.venue.fullname
     xml.description "Ride Requests and Offers for" + " " + @board.name.capitalize + " - " + @board.venue.fullname
     # xml.link formatted_articles_url(:rss)
 

@@ -1,10 +1,12 @@
-class Locale
+require 'ixtlan/gettext/locale_resource'
+class Ixtlan::Gettext::Locale
 
-  include DataMapper::Resource
-
-  property :id, Serial  
-  property :code, String, :required => true , :format => /^[a-z][a-z](_[A-Z][A-Z])?$/, :length => 7, :unique_index => true
-
-  timestamps :updated_at
-
+  # use the same table as Locale
+  def self.storage_name(repo = :default)
+    'locales'
+  end
 end
+
+class Locale < Ixtlan::Gettext::Locale
+end
+

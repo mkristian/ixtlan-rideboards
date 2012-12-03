@@ -1,7 +1,7 @@
 <% require 'paragraph' -%>
 <%= _ "Hello" %> <%= @contact.listing.name %>
 
-<%= Paragraph.format(_("Please contact") + ' ' + @contact.name.strip + ' ' + _("in order to discuss your") + ' ' + _(@contact.listing.driver ? "ride offer" : "ride request") + ' ' + _("to") + ' ' +  @contact.listing.board.fullname + ' ' + _("on") + ' ' +  @contact.listing.ridedate.to_s, 60) %>.
+<%= Paragraph.format(_("Please contact") + ' ' + @contact.name.strip + ' ' + _("in order to discuss your") + ' ' + @contact.listing.driver ? _("ride offer") : _("ride request") + ' ' + _("to _BOARD_NAME_").sub(/_BOARD_NAME_/, @contact.listing.board.fullname) + ' ' + _("on") + ' ' +  @contact.listing.ridedate.to_s, 60) %>.
 
 <%= _ "You can reach" %> <%= @contact.name.strip %> <%= _ "by email at:" %> <%= @contact.email.strip %>
 <% if @contact.phone && @contact.phone.strip != "" %><%= _ "or by telephone at:" %> <%= @contact.phone %>.

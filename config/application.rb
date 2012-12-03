@@ -14,15 +14,30 @@ require 'rails/test_unit/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Rideboard
+require File.expand_path('../preinitializer', __FILE__)
+
+module Rideboards
   class Application < Rails::Application
+
+    config.generators do |g|
+      g.stylesheet_engine false
+      g.template_engine 'ui'
+      g.assets false
+      g.helper false
+      g.test_framework false
+      g.stylesheets false
+      g.scaffold_controller 'gwt'
+      g.resource_route 'gwt'
+      g.orm 'data_mapper'
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W(#{config.root}/app/serializers)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/serializers)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

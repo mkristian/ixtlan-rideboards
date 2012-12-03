@@ -5,3 +5,4 @@ tmp/
 target/
 .pom.xml
 gwt-unitCache
+*pom

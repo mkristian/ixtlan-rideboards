@@ -49,7 +49,7 @@ class Mailer < ActionMailer::Base
   private
 
   def find_template(template_name, lang, venue)
-    path = Rideboard::Application.root + 'app' + 'views' + 'mailer' + "#{template_name}*.erb"
+    path = Rideboards::Application.root + 'app' + 'views' + 'mailer' + "#{template_name}*.erb"
     lvname = "#{template_name}.#{lang}.#{venue.name}"
     vname = "#{template_name}.#{venue.name}"
     lname = "#{template_name}.#{lang}"

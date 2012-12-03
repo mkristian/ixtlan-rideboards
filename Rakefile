@@ -4,13 +4,33 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Rideboard::Application.load_tasks
+Rideboards::Application.load_tasks
 
-desc 'triggers the heartbeat request (user updates)'
-task :heartbeat => [:environment] do
-    heartbeat = Heartbeat.new
-    heartbeat.beat
+desc 'update all configured remote resources'
+task :update => [:environment] do
+    sync = Updater.new
+    sync.do_it
 
-    puts "#{DateTime.now.strftime('%Y-%m-%d %H:%M:%S')} - #{heartbeat}"
+    puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}\n\t#{sync}"
+end
+
+namespace :update do
+
+  desc 'update remote resources from gettext server'
+  task :gettext => [:environment] do
+    sync = Updater.new
+    sync.do_it( Rideboards::Application.config.rest.server( :gettext ).models )
+
+    puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}\n\t#{sync}"
+  end
+
+  desc 'update remote resources from users server'
+  task :users => [:environment] do
+    sync = Updater.new
+    sync.do_it( Rideboards::Application.config.rest.server( :users ).models )
+
+    puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}\n\t#{sync}"
+  end
+
 end
 # vim: syntax=Ruby

@@ -1,26 +1,16 @@
-class ErrorSerializer < Ixtlan::Babel::NoTimestampSerializer
-  add_defaults('error')
-end
-
 class ErrorsController < ApplicationController
 
   public
 
   # GET /errors
-  # GET /errors.xml
-  # GET /errors.json
   def index
     @errors = serializer(Error.all).use(:collection)
-
-    respond_with(@errors)
+    respond_with @errors
   end
 
   # GET /errors/1
-  # GET /errors/1.xml
-  # GET /errors/1.json
   def show
-    @error = serializer(Error.get(params[:id]))
-
-    respond_with(@error)
+    @error = serializer(Error.get!(params[:id]))
+    respond_with @error
   end
 end

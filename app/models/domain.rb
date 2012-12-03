@@ -1,10 +1,11 @@
-class Domain
+require 'ixtlan/user_management/domain_resource'
+class Ixtlan::UserManagement::Domain
 
-  include DataMapper::Resource
+  # use the same table as Domain
+  def self.storage_name(repo = :default)
+    'domains'
+  end
+end
 
-  property :id, Serial  
-  property :name, String, :format => /^[a-z]+$/,:required => true, :length => 32
-
-  timestamps :updated_at
-
+class Domain < Ixtlan::UserManagement::Domain
 end

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     if @session.valid?
       current_user(@session.user)
       @session.idle_session_timeout = 
-        Rideboard::Application.config.idle_session_timeout
+        Rideboards::Application.config.idle_session_timeout
       @session.permissions = guard.permissions(current_groups)
 
       respond_with(@session)

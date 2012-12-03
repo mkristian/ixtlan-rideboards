@@ -16,7 +16,7 @@ class BoardConfig
   validates_format_of :map_url, :directions_url, :transportation_url, :with => VenueConfig::URL_PATTERN, :message => VenueConfig::FORMAT_MESSAGE, :when => [ :strict ]
 
   alias :venue_valid? :valid?
-  def valid?
+  def valid?(*args)
     venue_valid?((board && board.venue.strict_domain_names) ? :strict : :default)
   end
 end

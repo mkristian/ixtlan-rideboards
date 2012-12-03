@@ -44,7 +44,7 @@ en:
   Please fill in the following fields: Please fill in the following fields
   Please let us know if you have any questions.: Please let us know if you have any questions.
   Please remember this removal code: Please remember this removal code
-  Please review the Rideboard to ensure this change was properly processed.: Please review the Rideboard to ensure this change was properly processed.
+  Please review the Rideboards to ensure this change was properly processed.: Please review the Rideboards to ensure this change was properly processed.
   Privacy Policy: Privacy Policy
   Public Transportation Options: Public Transportation Options
   Remind Me: Remind Me
@@ -64,7 +64,7 @@ en:
   Ride Request for: Ride Request for
   Ride Requests: Ride Requests
   Ride date: Ride date
-  Rideboard: Metta Forest
+  Rideboards: Metta Forest
   Rides Offers: Rides Offers
   Rideshare Board: Rideshare Board
   Rideshare: Rideshare
@@ -76,7 +76,7 @@ en:
   The following email message was sent to: The following email message was sent to
   The following information is listed: The following information is listed
   The password to access the rideboard is: The password to access the rideboard is
-  This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to Vipassana courses.: This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to Metta Forest Monastery.
+  This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to Vipassana courses.: This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to and from _VENUE_NAME_.
   To protect your privacy, please do not post your full address: To protect your privacy, please do not post your full address
   To remove your listing, please enter this code at: To remove your listing, please enter this code at
   Type: Type
@@ -101,5 +101,5 @@ en:
   ride offer: ride offer
   ride request: ride request
   the removal code has also been sent to your email address: the removal code has also been sent to your email address
-  to: to
+  to _BOARD_NAME_: to
   was removed: was removed

@@ -1,5 +1,5 @@
 #-*- mode: ruby -*-
-GWT_VERSION = '2.4.0'
+GWT_VERSION = '2.4.0' unless defined? GWT_VERSION
 jar('de.mkristian.gwt:rails-gwt', '0.8.0-SNAPSHOT').scope :provided
 jar('org.fusesource.restygwt:restygwt', '1.3-SNAPSHOT').scope :provided
 jar('javax.ws.rs:jsr311-api', '1.1').scope :provided
@@ -15,23 +15,14 @@ plugin('org.codehaus.mojo:gwt-maven-plugin', GWT_VERSION) do |gwt|
              :hostedWebapp => "${basedir}/public",
              :inplace => true,
              :logLevel => "INFO",
-             :style => "DETAILED",
              :treeLogger => true,
              :extraJvmArgs => "-Xmx512m",
-             :runTarget => "Rideboard.html",
-             :includes => "**/RideboardGWTTestSuite.java"
+             :gen => "${project.build.directory}/generated",
+             :runTarget => "rideboard.html"
            })
   gwt.executions.goals << ["clean", "compile", "test"]
 end
 plugin(:rails3).in_phase("initialize").execute_goal(:pom).with :force => true
-plugin(:clean, '2.5') do |c|
-  c.with({:filesets => Maven::Model::NamedArray.new(:fileset) do |l|
-              l << { :directory => "public/WEB-INF/classes" }
-              l << { :directory => "public/WEB-INF/deploy" }
-              l << { :directory => "public/WEB-INF/lib" }
-          end
-        })
-end
 
 #-- Macs need the -d32 -XstartOnFirstThread jvm options -->
 profile("mac") do |mac|
@@ -40,13 +31,33 @@ profile("mac") do |mac|
 end
 
 # to get the restygwt and rails-gwt snapshots
-#repository("snapshots") do |snapshot|
-#  snapshot.url "http://"
-#  snapshot.releases(:enabled => false)
-#  snapshot.snapshots(:enabled => true)
+#repository("snapshots") do |snapshots|
+#  snapshots.url "http://http://mojo.saumya.de/"
+#  snapshots.releases(:enabled => false)
+#  snapshots.snapshots(:enabled => true)
 #end
 
-# latest version has bug with PUT + DELETE request
-jar 'org.jruby.rack:jruby-rack', '1.1.4'
+# latest version
+jar 'org.jruby.rack:jruby-rack', '1.1.7'
 
+profile :development do |p|
+  p.activation.by_default
+  p.plugin('org.codehaus.mojo:gwt-maven-plugin', GWT_VERSION) do |gwt|
+    gwt.with({ :module => 'org.dhamma.rideboards.RideboardDevelopment',
+               :style => "DETAILED",
+               :includes => "**/RideboardGWTTestSuite.java",
+               :draftCompile => true })
+  end
+end
+
+profile :production do |p|
+  p.plugin('org.codehaus.mojo:gwt-maven-plugin', GWT_VERSION) do |gwt|
+    gwt.with({ :module => 'org.dhamma.rideboards.Rideboard',
+               :style => "OBF",
+               :draftCompile => false,
+               :disableClassMetadata => true,
+               :disableCastChecking => true,
+               :optimizationLevel => 9})
+  end
+end
 # vim: syntax=Ruby

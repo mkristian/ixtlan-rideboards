@@ -76,7 +76,7 @@ gem "jruby-openssl", "~> 0.7.4", :platforms => :jruby
 gem "enforce-ssl"
 gem "ixtlan-error-handler", "~> 0.2.0"
 gem "ixtlan-audit", "~> 0.2.1"
-gem 'ixtlan-babel', '~> 0.1.2' #, :path => '../../ixtlan/ixtlan-babel'
+#gem 'ixtlan-babel', '~> 0.1.2' #, :path => '../../ixtlan/ixtlan-babel'
 
 group :development do
   gem 'dm-sqlite-adapter', DM_VERSION
@@ -86,7 +86,13 @@ group :production do
   gem 'dm-postgres-adapter', DM_VERSION
 end
 
-#gem 'gwt-rails', :path => '../../maven/gwt-rails'
-#gem 'ixtlan-generators', :path => '../../ixtlan/ixtlan-generators'
-
+gem 'gwt-rails', :path => '../../gwt/gwt-rails', :group => :development
 gem 'gettext_i18n_rails'
+gem "ixtlan-optimistic", :path => '../../ixtlan/ixtlan-optimistic'
+gem "ixtlan-babel"
+
+gem 'ixtlan-remote', :path => '../../ixtlan/ixtlan-remote'
+gem 'rest-client', '1.6.7'
+
+gem 'virtus', '~> 0.5.0'
+gem 'backports'

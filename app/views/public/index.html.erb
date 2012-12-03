@@ -23,9 +23,9 @@
   <% for board in @board.venue.boards %>
   <% if board.enabled
      if board == @board %>
-  <span class="inactive"><%= board.name.capitalize + " " + _ "Rideboard" %></span>	     	  
+  <span class="inactive"><%= board.name.capitalize + " " + _ "Rideboards" %></span>	     	  
   <% else %>
-  <a href="<%= "#{@path_prefix}/boards/#{board.id}" %>"><%= board.name.capitalize + " " + _ "Rideboard" %></a>
+  <a href="<%= "#{@path_prefix}/boards/#{board.id}" %>"><%= board.name.capitalize + " " + _ "Rideboards" %></a>
   <% end %>
   |
   <% end %>

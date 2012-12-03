@@ -1,4 +1,4 @@
-Rideboard::Application.configure do
+Rideboards::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -22,10 +22,4 @@ Rideboard::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  if ENV['SSO'] == 'true' || ENV['SSO'] == ''
-    config.remote_service_url = 'http://localhost:3000'
-    config.remote_token = 'be happy'
-  else
-    Session.send(:include, DummyAuthentication)
-  end
 end
