@@ -3,7 +3,6 @@ package com.example.client.views;
 import javax.inject.Inject;
 
 import com.example.client.editors.ConfigurationEditor;
-import com.example.client.models.User;
 import com.example.client.models.Configuration;
 import com.example.client.places.ConfigurationPlace;
 
@@ -23,7 +22,7 @@ import com.google.inject.Singleton;
 import de.mkristian.gwt.rails.places.RestfulAction;
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
 import static de.mkristian.gwt.rails.places.RestfulActionEnum.*;
-import de.mkristian.gwt.rails.session.SessionManager;
+import de.mkristian.gwt.rails.session.Guard;
 
 @Singleton
 public class ConfigurationViewImpl extends Composite implements ConfigurationView {
@@ -48,14 +47,14 @@ public class ConfigurationViewImpl extends Composite implements ConfigurationVie
 
     private Presenter presenter;
 
-    private final SessionManager<User> session;
+    private final Guard session;
 
     public ConfigurationViewImpl() {
         this(null);
     }
 
     @Inject
-    public ConfigurationViewImpl(SessionManager<User> session) {
+    public ConfigurationViewImpl(Guard session) {
         initWidget(BINDER.createAndBindUi(this));
         editorDriver.initialize(editor);
         this.session = session;
