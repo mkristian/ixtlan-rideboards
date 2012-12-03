@@ -1,22 +1,21 @@
 package org.dhamma.rideboards.client.presenters;
 
-import org.dhamma.rideboards.client.RideboardErrorHandler;
-import org.dhamma.rideboards.client.models.Error;
-import org.dhamma.rideboards.client.places.ErrorPlace;
-import org.dhamma.rideboards.client.views.ErrorListView;
-import org.dhamma.rideboards.client.views.ErrorView;
-import org.dhamma.rideboards.client.restservices.ErrorsRestService;
-
 import java.util.List;
 
 import javax.inject.Inject;
-import com.google.gwt.place.shared.PlaceController;
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
+import org.dhamma.rideboards.client.RideboardErrorHandler;
+import org.dhamma.rideboards.client.models.Error;
+import org.dhamma.rideboards.client.places.ErrorPlace;
+import org.dhamma.rideboards.client.restservices.ErrorsRestService;
+import org.dhamma.rideboards.client.views.ErrorListView;
+import org.dhamma.rideboards.client.views.ErrorView;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
-import de.mkristian.gwt.rails.ErrorHandler.Type;
+import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
+
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
 
 public class ErrorPresenter extends AbstractPresenter {
@@ -82,12 +81,7 @@ public class ErrorPresenter extends AbstractPresenter {
     }
 
     private void onError(Method method, Throwable e) {
-        errors.onError(method, errors.getType(e));
-    }
-
-    private void onError(final Error model, Method method, Throwable e) {
-        Type type = errors.getType(e);
-	        errors.onError(method, type);
+        errors.onError(method, e);
     }
 
     public boolean isDirty() {

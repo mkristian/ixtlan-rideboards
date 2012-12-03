@@ -1,21 +1,18 @@
 package org.dhamma.rideboards.client.presenters;
 
+import javax.inject.Inject;
+
 import org.dhamma.rideboards.client.RideboardErrorHandler;
 import org.dhamma.rideboards.client.models.Configuration;
 import org.dhamma.rideboards.client.places.ConfigurationPlace;
-import org.dhamma.rideboards.client.views.ConfigurationView;
 import org.dhamma.rideboards.client.restservices.ConfigurationsRestService;
-
-import java.util.List;
-
-import javax.inject.Inject;
-import com.google.gwt.place.shared.PlaceController;
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
-
+import org.dhamma.rideboards.client.views.ConfigurationView;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
-import de.mkristian.gwt.rails.ErrorHandler.Type;
+import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.ui.AcceptsOneWidget;
+
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
 
 public class ConfigurationPresenter extends AbstractPresenter {
@@ -45,7 +42,7 @@ public class ConfigurationPresenter extends AbstractPresenter {
             }
             @Override
             public void onFailure(Method method, Throwable e) {
-                onError(model, method, e);
+                onError(method, e);
             }
           });
     }
@@ -91,15 +88,7 @@ public class ConfigurationPresenter extends AbstractPresenter {
     }
 
     private void onError(Method method, Throwable e) {
-        errors.onError(method, errors.getType(e));
-    }
-
-    private void onError(final Configuration model, Method method, Throwable e) {
-        Type type = errors.getType(e);
-	        if (type == Type.CONFLICT){
-            view.reload(model);
-        }
-        errors.onError(method, type);
+        errors.onError(method, e);
     }
 
     public boolean isDirty() {

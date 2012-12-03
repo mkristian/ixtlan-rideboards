@@ -1,16 +1,17 @@
 package org.dhamma.rideboards.client.places;
 
+import de.mkristian.gwt.rails.places.RestfulAction;
 import de.mkristian.gwt.rails.places.RestfulPlaceTokenizer;
 
 public class AuditPlaceTokenizer extends RestfulPlaceTokenizer<AuditPlace> {
-    
-    public AuditPlace getPlace(String token) {
-        Token t = toToken(token);
-        if(t.identifier == null){
-            return new AuditPlace(t.action);
-        }
-        else {
-            return new AuditPlace(t.id, t.action);
-        }
+
+    @Override
+    protected AuditPlace newRestfulPlace(RestfulAction action) {
+        return new AuditPlace(action);
+    }
+
+    @Override
+    protected AuditPlace newRestfulPlace(int id, RestfulAction action) {
+        return new AuditPlace(id, action);
     }
 }

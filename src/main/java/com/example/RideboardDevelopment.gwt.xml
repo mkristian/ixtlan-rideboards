@@ -1,7 +1,0 @@
-<module rename-to='Rideboard'>
-
-  <collapse-all-properties />
-  
-  <inherits name='com.example.client.Rideboard' />
-
-</module>

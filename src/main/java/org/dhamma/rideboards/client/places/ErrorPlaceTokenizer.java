@@ -1,16 +1,17 @@
 package org.dhamma.rideboards.client.places;
 
+import de.mkristian.gwt.rails.places.RestfulAction;
 import de.mkristian.gwt.rails.places.RestfulPlaceTokenizer;
 
 public class ErrorPlaceTokenizer extends RestfulPlaceTokenizer<ErrorPlace> {
-    
-    public ErrorPlace getPlace(String token) {
-        Token t = toToken(token);
-        if(t.identifier == null){
-            return new ErrorPlace(t.action);
-        }
-        else {
-            return new ErrorPlace(t.id, t.action);
-        }
+
+    @Override
+    protected ErrorPlace newRestfulPlace(RestfulAction action) {
+        return new ErrorPlace(action);
+    }
+
+    @Override
+    protected ErrorPlace newRestfulPlace(int id, RestfulAction action) {
+        return new ErrorPlace(id, action);
     }
 }
