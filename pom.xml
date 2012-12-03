@@ -1100,7 +1100,7 @@
             <configuration>
               <draftCompile>true</draftCompile>
               <includes>**/RideboardGWTTestSuite.java</includes>
-              <module>org.dhamma.rideboards.RideboardDevelopment</module>
+              <module>de.mkristian.ixtlan.rideboards.RideboardDevelopment</module>
               <style>DETAILED</style>
             </configuration>
           </plugin>
@@ -1161,7 +1161,7 @@
               <disableCastChecking>true</disableCastChecking>
               <disableClassMetadata>true</disableClassMetadata>
               <draftCompile>false</draftCompile>
-              <module>org.dhamma.rideboards.Rideboard</module>
+              <module>de.mkristian.ixtlan.rideboards.Rideboard</module>
               <optimizationLevel>9</optimizationLevel>
               <style>OBF</style>
             </configuration>
