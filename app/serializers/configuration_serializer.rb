@@ -4,8 +4,9 @@ class ConfigurationSerializer < Ixtlan::Babel::Serializer
 
   model Configuration
 
+  root 'configuration'
+
   add_context(:single,
-              :root => 'configuration',
               :except => [:id, :modified_by_id],
               :include => {
                 :modified_by => {
@@ -13,6 +14,4 @@ class ConfigurationSerializer < Ixtlan::Babel::Serializer
                 }
               }
              )
-
-  default_context_key :single
 end

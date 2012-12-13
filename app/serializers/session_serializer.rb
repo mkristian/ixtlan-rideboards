@@ -1,8 +1,9 @@
 require 'ixtlan/babel/serializer'
 class SessionSerializer < Ixtlan::Babel::Serializer
 
+  root 'session'
+
   add_context(:single,
-              :root => 'session',
               :only => [:permissions, :idle_session_timeout],
               :include=> { 
                 :user => {
@@ -15,6 +16,4 @@ class SessionSerializer < Ixtlan::Babel::Serializer
                 }
               }
            )
-
-  default_context_key :single
 end

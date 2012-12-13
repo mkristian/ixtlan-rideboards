@@ -9,6 +9,10 @@ require 'action_mailer/railtie'
 require 'active_resource/railtie'
 require 'rails/test_unit/railtie'
 
+ENV['TZ'] = 'UTC'
+if defined? JRUBY_VERSION
+  org.joda.time.DateTimeZone.setDefault(org.joda.time.DateTimeZone.forID('UTC'))
+end
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.

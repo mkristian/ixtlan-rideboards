@@ -1,7 +1,7 @@
 require 'date'
 
 # use UTC everywhere
-# keep default format to bedatabase compatible, i.e. no millis or nanos
+# keep default format to be database compatible, i.e. no millis or nanos
 
 class DateTime
 
@@ -19,4 +19,7 @@ class DateTime
     end
   end
 
+  def self.parse( str )
+    Time.parse( str ).to_datetime.utc
+  end
 end

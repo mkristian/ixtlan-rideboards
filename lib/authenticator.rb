@@ -1,4 +1,5 @@
 require 'ixtlan/user_management/authenticator'
+require 'ixtlan/user_management/dummy_authentication'
 class Authenticator < Ixtlan::UserManagement::Authenticator
 
   def initialize
@@ -14,36 +15,21 @@ class Authenticator < Ixtlan::UserManagement::Authenticator
 end
 
 # only dev mod without SSO needs a dummy authentication
-if Rideboards::Application.config.rest.to_server( 'users' ).url =~ /localhost/ && !(ENV['SSO'] == 'true' || ENV['SSO'] == '')
+if Ixtlan::UserManagement::DummyAuthentication.need_dummy?( Rideboards::Application.config.rest, 'users' )
 
-  module DummyAuthentication
+  class Authenticator
 
-    def login(login, password)
-      result = nil
-      if ! login.blank? && password.blank?
-        if u = User.get!(1)
-          result = u
-        else
-          result.id = 1
-          result.updated_at = DateTime.now
-        end
-        result.login = login.sub( /\[.*/, '' )
-        result.name = result.login.humanize
-        g = Group.new('name' => result.login )
-        lids = []
-        login.sub(/.*\[/,'').sub(/\].*/,'').split(/,/).each do |id| 
-          if id.length == 2
-            lids << id
-          end
-        end
-        g.locales = Locale.all(:code => lids)
-        result.groups = [g]
-        result.applications = []
-      end
-      result
+    include Ixtlan::UserManagement::DummyAuthentication
+
+    def user_model
+      User
+    end
+
+    def setup_group( login )
+      g = group_for( Group, login )
+      g.domains = Domain.all( :name => split( login ) )
+      g
     end
   end
 
-  require 'authenticator'
-  Authenticator.send(:include, DummyAuthentication)
 end

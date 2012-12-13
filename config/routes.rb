@@ -1,5 +1,6 @@
 Rideboards::Application.routes.draw do
-  resource :confguration
+
+  get "gettext/flush" => "gettext#flush"
 
   resource :configuration
 

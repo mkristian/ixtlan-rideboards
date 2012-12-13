@@ -6,33 +6,37 @@ class SessionsController < ApplicationController
 
   prepend_after_filter :reset_session, :only => :destroy
 
+  private
+
+  def authenticator
+    @_auth ||= Authenticator.new
+  end
+
+  def login_and_password
+    auth = params[:authentication] || params
+    @session = auth[:login] || auth[:email]
+    [ @session, auth[:password] ]
+  end
+
   public
 
   def create
-    auth = params[:authentication] || params
-    @session = serializer(Session.create(auth[:login] || auth[:email], 
-                                         auth[:password]))
-    if @session.valid?
-      current_user(@session.user)
-      @session.idle_session_timeout = 
-        Rideboards::Application.config.idle_session_timeout
-      @session.permissions = guard.permissions(current_groups)
+    user = authenticator.login( *login_and_password )
+    if user      
+      current_user( user )
+      @session = serializer( Session.new( 'user' => user,
+                                          'idle_session_timeout' => Rideboards::Application.config.idle_session_timeout,
+                                          'permissions' => guard.permissions( user.groups) ) )
 
       respond_with(@session)
     else
+      @session = "access denied #{@session}"
       head :unauthorized
     end
   end
 
   def reset_password
-    authentication = params[:authentication] || []
-    user = User.reset_password(authentication[:email] || authentication[:login])
-
-    if user
-
-      # for the log
-      @session = user
-      
+    if @session = authenticator.reset_password( login_and_password[ 0 ] )
       head :ok
     else
       head :not_found
