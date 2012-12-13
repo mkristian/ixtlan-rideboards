@@ -72,11 +72,11 @@ gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
 gem "ixtlan-core", '~> 0.7.5' #, :path => '../../ixtlan/ixtlan-core'
 gem "ixtlan-session-timeout"
 gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
-gem "jruby-openssl", "~> 0.7.4", :platforms => :jruby
+gem "jruby-openssl", "~> 0.8.2", :platforms => :jruby
 gem "enforce-ssl"
 gem "ixtlan-error-handler", "~> 0.2.0"
 gem "ixtlan-audit", "~> 0.2.1"
-#gem 'ixtlan-babel', '~> 0.1.2' #, :path => '../../ixtlan/ixtlan-babel'
+gem 'ixtlan-babel', :path => '../../ixtlan/ixtlan-babel'
 
 group :development do
   gem 'dm-sqlite-adapter', DM_VERSION
@@ -89,10 +89,12 @@ end
 gem 'gwt-rails', :path => '../../gwt/gwt-rails', :group => :development
 gem 'gettext_i18n_rails'
 gem "ixtlan-optimistic", :path => '../../ixtlan/ixtlan-optimistic'
-gem "ixtlan-babel"
 
 gem 'ixtlan-remote', :path => '../../ixtlan/ixtlan-remote'
+gem 'ixtlan-gettext', :path => '../../ixtlan/ixtlan-gettext'
 gem 'rest-client', '1.6.7'
 
 gem 'virtus', '~> 0.5.0'
-gem 'backports'
+gem 'backports', :platforms => :ruby_19
+
+gem 'copyright-header', '~> 1.0.7', :group => :development

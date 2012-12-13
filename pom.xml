@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>rails</groupId>
-  <artifactId>rideboard</artifactId>
+  <artifactId>ixtlan-rideboards</artifactId>
   <version>0.0.0</version>
-  <name><![CDATA[rideboard - rails application]]></name>
+  <name><![CDATA[ixtlan-rideboards - rails application]]></name>
   <packaging>war</packaging>
   <repositories>
     <repository>
@@ -290,12 +290,17 @@
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
-      <artifactId>ixtlan-optimistic</artifactId>
+      <artifactId>rest-client</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
-      <artifactId>ixtlan-babel</artifactId>
+      <artifactId>virtus</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>backports</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -390,6 +395,48 @@
         <groupId>rubygems</groupId>
         <artifactId>thor</artifactId>
         <version>0.14.6</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-babel</artifactId>
+        <version>0.1.2</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-gettext</artifactId>
+        <version>0.1.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>fast_gettext</artifactId>
+        <version>0.6.8</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-remote</artifactId>
+        <version>0.1.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>rest-client</artifactId>
+        <version>1.6.7</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>mime-types</artifactId>
+        <version>1.19</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-optimistic</artifactId>
+        <version>0.2.0</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -490,12 +537,6 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>mime-types</artifactId>
-        <version>1.19</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>treetop</artifactId>
         <version>1.4.10</version>
         <type>gem</type>
@@ -526,6 +567,12 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
+        <artifactId>backports</artifactId>
+        <version>2.6.2</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
         <artifactId>bcrypt-ruby</artifactId>
         <version>3.0.1</version>
         <type>gem</type>
@@ -534,6 +581,12 @@
         <groupId>rubygems</groupId>
         <artifactId>bouncy-castle-java</artifactId>
         <version>1.5.0146.1</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>copyright-header</artifactId>
+        <version>1.0.7</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -629,7 +682,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>rake</artifactId>
-        <version>0.9.2.2</version>
+        <version>10.0.2</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -712,12 +765,6 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>fast_gettext</artifactId>
-        <version>0.6.8</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>gettext_i18n_rails</artifactId>
         <version>0.6.6</version>
         <type>gem</type>
@@ -732,12 +779,6 @@
         <groupId>rubygems</groupId>
         <artifactId>slf4r</artifactId>
         <version>0.4.2</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ixtlan-babel</artifactId>
-        <version>0.1.2</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -760,12 +801,6 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>ixtlan-optimistic</artifactId>
-        <version>0.1.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>ixtlan-session-timeout</artifactId>
         <version>0.4.0</version>
         <type>gem</type>
@@ -773,7 +808,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>jruby-openssl</artifactId>
-        <version>0.7.7</version>
+        <version>0.8.2</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -786,6 +821,12 @@
         <groupId>rubygems</groupId>
         <artifactId>tzinfo</artifactId>
         <version>0.3.33</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>virtus</artifactId>
+        <version>0.5.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -898,6 +939,12 @@
             <version>9.1.901</version>
             <type>gem</type>
           </dependency>
+          <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>copyright-header</artifactId>
+            <version>[1.0.7,1.0.99999]</version>
+            <type>gem</type>
+          </dependency>
         </dependencies>
       </plugin>
       <plugin>
@@ -910,7 +957,7 @@
           <hostedWebapp>${basedir}/public</hostedWebapp>
           <inplace>true</inplace>
           <logLevel>INFO</logLevel>
-          <runTarget>rideboard.html</runTarget>
+          <runTarget>Rideboard.html</runTarget>
           <treeLogger>true</treeLogger>
           <warSourceDirectory>${basedir}/public</warSourceDirectory>
           <webXml>${basedir}/public/WEB-INF/web.xml</webXml>
@@ -1088,6 +1135,12 @@
         <dependency>
           <groupId>rubygems</groupId>
           <artifactId>jdbc-sqlite3</artifactId>
+          <type>gem</type>
+        </dependency>
+        <dependency>
+          <groupId>rubygems</groupId>
+          <artifactId>copyright-header</artifactId>
+          <version>[1.0.7,1.0.99999]</version>
           <type>gem</type>
         </dependency>
       </dependencies>

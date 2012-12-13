@@ -18,7 +18,7 @@ plugin('org.codehaus.mojo:gwt-maven-plugin', GWT_VERSION) do |gwt|
              :treeLogger => true,
              :extraJvmArgs => "-Xmx512m",
              :gen => "${project.build.directory}/generated",
-             :runTarget => "rideboard.html"
+             :runTarget => "Rideboard.html"
            })
   gwt.executions.goals << ["clean", "compile", "test"]
 end

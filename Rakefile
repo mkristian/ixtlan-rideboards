@@ -17,9 +17,9 @@ end
 namespace :update do
 
   desc 'update remote resources from gettext server'
-  task :gettext => [:environment] do
+  task :translations => [:environment] do
     sync = Updater.new
-    sync.do_it( Rideboards::Application.config.rest.server( :gettext ).models )
+    sync.do_it( Rideboards::Application.config.rest.server( :translations ).models )
 
     puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}\n\t#{sync}"
   end
@@ -33,4 +33,23 @@ namespace :update do
   end
 
 end
+
+task :headers do
+  require 'rubygems'
+  require 'copyright_header'
+
+  args = {
+    :license => 'AGPL3', 
+    :copyright_software => 'ixtlan_rideboards',
+    :copyright_software_description => 'webapp to manage car pools to reach configured locations',
+    :copyright_holder => ['Christian Meier'],
+    :copyright_years => [Time.now.year],
+    :add_path => ['lib', 'app', 'src', 'config', 'db/seeds.rb'].join(File::SEPARATOR),
+    :output_dir => '.'
+  }
+
+  command_line = CopyrightHeader::CommandLine.new( args )
+  command_line.execute
+end
+
 # vim: syntax=Ruby
