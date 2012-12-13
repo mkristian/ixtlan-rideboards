@@ -1,6 +1,8 @@
 package de.mkristian.ixtlan.rideboards.client;
 
 
+import org.fusesource.restygwt.client.Defaults;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.GinModules;
@@ -9,16 +11,13 @@ import com.google.gwt.place.shared.PlaceHistoryHandler;
 
 import de.mkristian.gwt.rails.Application;
 import de.mkristian.gwt.rails.dispatchers.DefaultDispatcherSingleton;
-import de.mkristian.ixtlan.rideboards.client.managed.RideboardModule;
-
-import org.fusesource.restygwt.client.Defaults;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class RideboardEntryPoint implements EntryPoint {
 
-    @GinModules(RideboardModule.class)
+    @GinModules(RideboardGinModule.class)
     static public interface RideboardGinjector extends Ginjector {
         PlaceHistoryHandler getPlaceHistoryHandler();
         Application getApplication();

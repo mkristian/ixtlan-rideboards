@@ -23,13 +23,18 @@ public class ConfigurationActivity extends AbstractActivity {
     }
 
     public void start(AcceptsOneWidget display, EventBus eventBus) {
-        presenter.init(display);
-        switch(RestfulActionEnum.valueOf(place.action)){
+        presenter.init( display );
+        switch( RestfulActionEnum.valueOf( place.action ) ){
             case EDIT:
                 presenter.edit();
                 break;
             case SHOW:
-                presenter.show();
+                if ( place.model != null ){
+                    presenter.show( place.model );
+                }
+                else {
+                    presenter.show();
+                }
                 break;
         }
     }

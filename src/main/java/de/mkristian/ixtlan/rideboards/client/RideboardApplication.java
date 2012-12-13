@@ -1,6 +1,9 @@
 package de.mkristian.ixtlan.rideboards.client;
 
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -13,43 +16,60 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
 
-import de.mkristian.gwt.rails.Application;
-import de.mkristian.gwt.rails.Notice;
+import de.mkristian.gwt.rails.RemoteNotifierLabel;
+import de.mkristian.gwt.rails.SessionApplication;
 import de.mkristian.ixtlan.rideboards.client.managed.RideboardMenu;
+import de.mkristian.ixtlan.rideboards.client.models.User;
 
-public class RideboardApplication extends Composite implements Application {
+@Singleton
+public class RideboardApplication extends Composite implements SessionApplication<User> {
     
     interface Binder extends UiBinder<Widget, RideboardApplication> {}
 
     private static Binder BINDER = GWT.create(Binder.class);
 
-    private final Notice notice;
-    @UiField(provided=true) final SimplePanel display = new ScrollPanel();
-    @UiField(provided=true) Panel header;
-    @UiField(provided=true) Panel navigation;
-    @UiField(provided=true) Panel footer;
+    private final RemoteNotifierLabel notifierLabel;
+
+    @UiField(provided=true) final SimplePanel display;
+    @UiField(provided=true) final Panel header;
+    @UiField(provided=true) final Panel navigation;
+    @UiField(provided=true) final Panel footer;
 
     @Inject
-    RideboardApplication(final Notice notice,
-            final BreadCrumbsPanel breadCrumbs,
-            final RideboardMenu menu,
+    RideboardApplication( final RemoteNotifierLabel notifierLabel,
             final ActivityManager activityManager,
-            final ApplicationLinksPanel links){
-        activityManager.setDisplay(display);
-        this.notice = notice;
-        this.header = breadCrumbs;
+            final RideboardMenu menu,
+            final BreadCrumbsPanel breadCrumbs,
+            final ApplicationLinksPanel links ){
+        this.display = new ScrollPanel();
+        this.notifierLabel = notifierLabel;
         this.navigation = menu;
         this.footer = links;
-        initWidget(BINDER.createAndBindUi(this));
+        this.header = breadCrumbs;
+        activityManager.setDisplay( display );
+        initWidget( BINDER.createAndBindUi( this ) );
     }
     
     @Override
     public void run() {
         LayoutPanel root = RootLayoutPanel.get();
-        root.add(notice);
-        root.setWidgetLeftWidth(notice, 25, Unit.PCT, 50, Unit.PCT);
+        root.add(notifierLabel);
+        root.setWidgetLeftWidth(notifierLabel, 25, Unit.PCT, 50, Unit.PCT);
         root.add(this.asWidget());
+    }
+    
+    @Override
+    public void startSession(User user) {
+        ((BreadCrumbsPanel) this.header).initUser(user);
+        ((ApplicationLinksPanel) this.footer).initApplications(user.applications);
+        this.navigation.setVisible(true);
+    }
+
+    @Override
+    public void stopSession() {
+        ((BreadCrumbsPanel) this.header).initUser(null);
+        ((ApplicationLinksPanel) this.footer).initApplications(null);
+        this.navigation.setVisible(false);
     }
 }

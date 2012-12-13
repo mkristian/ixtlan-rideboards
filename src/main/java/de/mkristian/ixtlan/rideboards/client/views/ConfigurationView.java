@@ -14,7 +14,7 @@ public interface ConfigurationView extends IsWidget {
 
     void show(Configuration model);
 
-    void reload(Configuration model);
+    //void reload(Configuration model);
 
     void edit(Configuration model);
 

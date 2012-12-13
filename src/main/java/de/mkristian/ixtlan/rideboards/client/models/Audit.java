@@ -19,24 +19,19 @@ public class Audit implements HasToDisplay, Identifyable {
   @Json(name = "created_at")
   private final Date createdAt;
 
-  @Json(name = "updated_at")
-  private final Date updatedAt;
+  private final String login;
 
-  private String login;
+  private final String message;
 
-  private String message;
-
-  public Audit(){
-    this(0, null, null);
-  }
-  
   @JsonCreator
   public Audit(@JsonProperty("id") int id, 
-          @JsonProperty("createdAt") Date createdAt, 
-          @JsonProperty("updatedAt") Date updatedAt){
+          @JsonProperty("login") String login,
+          @JsonProperty("message") String message, 
+          @JsonProperty("createdAt") Date createdAt){
     this.id = id;
+    this.login = login;
+    this.message = message;
     this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
   }
 
   public int getId(){
@@ -47,24 +42,12 @@ public class Audit implements HasToDisplay, Identifyable {
     return createdAt;
   }
 
-  public Date getUpdatedAt(){
-    return updatedAt;
-  }
-
   public String getLogin(){
     return login;
   }
 
-  public void setLogin(String value){
-    login = value;
-  }
-
   public String getMessage(){
     return message;
-  }
-
-  public void setMessage(String value){
-    message = value;
   }
 
   public int hashCode(){

@@ -7,13 +7,11 @@ import javax.inject.Inject;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 
-import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-import de.mkristian.gwt.rails.places.RestfulActionEnum;
+import de.mkristian.gwt.rails.RemoteNotifier;
 import de.mkristian.ixtlan.rideboards.client.RideboardErrorHandler;
 import de.mkristian.ixtlan.rideboards.client.models.Audit;
-import de.mkristian.ixtlan.rideboards.client.places.AuditPlace;
 import de.mkristian.ixtlan.rideboards.client.restservices.AuditsRestService;
 import de.mkristian.ixtlan.rideboards.client.views.AuditListView;
 import de.mkristian.ixtlan.rideboards.client.views.AuditView;
@@ -23,17 +21,19 @@ public class AuditPresenter extends AbstractPresenter {
     private final AuditView view;
     private final AuditListView listView;
     private final AuditsRestService service;
-    private final PlaceController places;
+    private final RemoteNotifier notifier;
 
     @Inject
-    public AuditPresenter(RideboardErrorHandler errors, AuditView view, AuditListView listView, AuditsRestService service, PlaceController places){
+    public AuditPresenter(RemoteNotifier notifier,
+            RideboardErrorHandler errors, 
+            AuditView view, 
+            AuditListView listView, 
+            AuditsRestService service){
         super(errors);
+        this.notifier = notifier;
         this.view = view;
-        this.view.setPresenter(this);
         this.listView = listView;
-        this.listView.setPresenter(this);
         this.service = service;
-        this.places = places;
     }
 
     public void init(AcceptsOneWidget display){
@@ -41,50 +41,40 @@ public class AuditPresenter extends AbstractPresenter {
     }
 
     public void listAll(){
-        AuditPlace next = new AuditPlace(RestfulActionEnum.INDEX);
-        if (places.getWhere().equals(next)) {
-            setWidget(listView);
-            service.index(new MethodCallback<List<Audit>>() {
-                @Override
-                public void onSuccess(Method method, List<Audit> models) {
-                    listView.reset(models);
-                }
-                @Override
-                public void onFailure(Method method, Throwable e) {
-                    onError(method, e);   
-                }
-            });
-        }
-        else {
-            places.goTo(next);
-        }
+        notifier.loading();
+        setWidget(listView);
+        service.index(new MethodCallback<List<Audit>>() {
+            @Override
+            public void onSuccess(Method method, List<Audit> models) {
+                notifier.finish();
+                listView.reset(models);
+            }
+            @Override
+            public void onFailure(Method method, Throwable e) {
+                onError(method, e);   
+            }
+        });
     }
 
     public void show(int id){
-        AuditPlace next = new AuditPlace(id, RestfulActionEnum.SHOW);
-        if (places.getWhere().equals(next)) {
-            setWidget(view);
-            service.show(id, new MethodCallback<Audit>() {
-                @Override
-                public void onSuccess(Method method, Audit model) {
-                    view.show(model);
-                }
-                @Override
-                public void onFailure(Method method, Throwable e) {
-		        onError(method, e);   
-                }
-              });
-        }
-        else {
-            places.goTo(next);
-        }
+        notifier.loading();
+        setWidget(view);
+        service.show(id, new MethodCallback<Audit>() {
+            @Override
+            public void onSuccess(Method method, Audit model) {
+                notifier.finish();
+                view.show(model);
+            }
+            @Override
+            public void onFailure(Method method, Throwable e) {
+                onError(method, e);   
+            }
+        });
     }
 
     private void onError(Method method, Throwable e) {
+        notifier.finish();
         errors.onError(method, e);
     }
         
-    public boolean isDirty() {
-        return view.isDirty();
-    }
 }

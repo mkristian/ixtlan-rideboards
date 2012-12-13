@@ -20,7 +20,6 @@ public class AuditEditor extends Composite implements Editor<Audit>{
 
     @UiField public NumberLabel<Integer> id;
     @UiField DateLabel createdAt;
-    @UiField DateLabel updatedAt;
 
     @UiField TextBox login;
 
