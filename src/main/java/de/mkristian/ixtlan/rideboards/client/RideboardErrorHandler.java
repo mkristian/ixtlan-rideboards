@@ -5,24 +5,17 @@ import javax.inject.Singleton;
 
 import org.fusesource.restygwt.client.Method;
 
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.Label;
 
-import de.mkristian.gwt.rails.ErrorHandler;
+import de.mkristian.gwt.rails.ErrorHandlerWithDisplay;
 import de.mkristian.gwt.rails.Notice;
 
 @Singleton
-public class RideboardErrorHandler extends ErrorHandler {
-
-    private AcceptsOneWidget display;
+public class RideboardErrorHandler extends ErrorHandlerWithDisplay {
 
     @Inject
     public RideboardErrorHandler(Notice notice) {
         super(notice);
-    }
-
-    public void setDisplay(AcceptsOneWidget display){
-        this.display = display;
     }
 
     // @Override
@@ -57,6 +50,6 @@ public class RideboardErrorHandler extends ErrorHandler {
 
     @Override
     protected void notFound(Method method) {
-    	display.setWidget(new Label("Resource Not Found."));
+    	getDisplay().setWidget(new Label("Resource Not Found."));
     }
 }

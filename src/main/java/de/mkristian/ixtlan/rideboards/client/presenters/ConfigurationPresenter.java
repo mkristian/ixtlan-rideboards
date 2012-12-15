@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.mkristian.gwt.rails.RemoteNotifier;
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
+import de.mkristian.gwt.rails.presenters.AbstractPresenter;
 import de.mkristian.ixtlan.rideboards.client.RideboardErrorHandler;
 import de.mkristian.ixtlan.rideboards.client.models.Configuration;
 import de.mkristian.ixtlan.rideboards.client.places.ConfigurationPlace;
@@ -22,6 +23,7 @@ public class ConfigurationPresenter extends AbstractPresenter {
     private final ConfigurationsRestService service;
     private final PlaceController places;
     private final RemoteNotifier notifier;
+    
     private boolean isEditing = false;
 
     @Inject

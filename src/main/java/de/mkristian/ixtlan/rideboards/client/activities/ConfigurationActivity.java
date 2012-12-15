@@ -17,7 +17,8 @@ public class ConfigurationActivity extends AbstractActivity {
     private final ConfigurationPresenter presenter;
     
     @Inject
-    public ConfigurationActivity(@Assisted ConfigurationPlace place, ConfigurationPresenter presenter) {
+    public ConfigurationActivity(@Assisted ConfigurationPlace place,
+                ConfigurationPresenter presenter) {
         this.place = place;
         this.presenter = presenter;
     }

@@ -49,9 +49,9 @@ public class AuditListViewImpl extends Composite implements AuditListView {
         public void onClick(ClickEvent event) {
             ModelButton<Audit> button = (ModelButton<Audit>)event.getSource();
             switch(button.action){
-                case SHOW: 
-                    places.goTo( new AuditPlace( button.model.id, 
-                            RestfulActionEnum.SHOW ) );
+                case SHOW:
+                    places.goTo( new AuditPlace( button.model, 
+                                         RestfulActionEnum.SHOW ) );
                     break; 
             }
         }

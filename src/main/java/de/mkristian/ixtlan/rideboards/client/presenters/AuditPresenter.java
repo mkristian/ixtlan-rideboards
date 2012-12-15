@@ -10,6 +10,7 @@ import org.fusesource.restygwt.client.MethodCallback;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.mkristian.gwt.rails.RemoteNotifier;
+import de.mkristian.gwt.rails.presenters.AbstractPresenter;
 import de.mkristian.ixtlan.rideboards.client.RideboardErrorHandler;
 import de.mkristian.ixtlan.rideboards.client.models.Audit;
 import de.mkristian.ixtlan.rideboards.client.restservices.AuditsRestService;

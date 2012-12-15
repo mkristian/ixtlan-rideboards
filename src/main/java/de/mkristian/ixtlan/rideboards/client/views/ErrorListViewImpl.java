@@ -1,29 +1,29 @@
 package de.mkristian.ixtlan.rideboards.client.views;
 
 
+import static de.mkristian.gwt.rails.places.RestfulActionEnum.SHOW;
+
 import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
- 
-import static de.mkristian.gwt.rails.places.RestfulActionEnum.SHOW;
 
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
 import de.mkristian.gwt.rails.views.ModelButton;
 import de.mkristian.ixtlan.rideboards.client.models.Error;
-import de.mkristian.ixtlan.rideboards.client.presenters.ErrorPresenter;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
+import de.mkristian.ixtlan.rideboards.client.places.ErrorPlace;
 
 @Singleton
 public class ErrorListViewImpl extends Composite implements ErrorListView {
@@ -33,27 +33,26 @@ public class ErrorListViewImpl extends Composite implements ErrorListView {
 
     private static Binder BINDER = GWT.create(Binder.class);
 
-    private ErrorPresenter presenter;
+    private final PlaceController places;
 
     @UiField FlexTable list;
 
     @Inject
-    public ErrorListViewImpl() {
+    public ErrorListViewImpl(PlaceController places) {
+        this.places = places;
         initWidget(BINDER.createAndBindUi(this));
     }
 
-    @Override
-    public void setPresenter(ErrorPresenter presenter) {
-        this.presenter = presenter;
-    }
-    
     private final ClickHandler clickHandler = new ClickHandler() {
         
         @SuppressWarnings("unchecked")
         public void onClick(ClickEvent event) {
             ModelButton<Error> button = (ModelButton<Error>)event.getSource();
             switch(button.action){
-                case SHOW: presenter.show(button.model.id); break; 
+                case SHOW:
+                    places.goTo( new ErrorPlace( button.model.id, 
+                            RestfulActionEnum.SHOW ) );
+                    break; 
             }
         }
     };

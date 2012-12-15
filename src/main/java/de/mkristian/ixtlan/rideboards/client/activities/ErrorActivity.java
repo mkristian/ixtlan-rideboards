@@ -34,14 +34,4 @@ public class ErrorActivity extends AbstractActivity {
                 break;
         }
     }
-
-    @Override
-    public String mayStop() {
-        if (presenter.isDirty()){
-            return "there are unsaved data.";
-        }
-        else {
-            return null;
-        }
-    }
 }
