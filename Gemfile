@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-RAILS_VERSION = '~> 3.2.5'
+RAILS_VERSION = '~> 3.2.9'
 DM_VERSION    = '~> 1.2.0'
 
 gem 'activesupport',  RAILS_VERSION, :require => 'active_support'
 gem 'actionpack',     RAILS_VERSION, :require => 'action_pack'
 gem 'actionmailer',   RAILS_VERSION, :require => 'action_mailer'
-gem 'activeresource', RAILS_VERSION, :require => 'active_resource'
+#gem 'activeresource', RAILS_VERSION, :require => 'active_resource'
 gem 'railties',       RAILS_VERSION, :require => 'rails'
 gem 'tzinfo',         '~> 0.3.32'
 
@@ -53,31 +53,6 @@ group :test do
   gem 'turn', '~> 0.9.4', :require => false
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-#group :assets do
-#  gem 'sass-rails',   '~> 3.2.3'
-#  gem 'coffee-rails', '~> 3.2.1'
-#
-#  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-#  gem 'therubyracer', :platforms => :ruby
-#  gem 'therubyrhino', :platforms => :jruby
-#
-#  gem 'uglifier', '>= 1.0.3'
-#end
-
-
-#gem "resty-generators", :path => '../../rails-resty-gwt/resty-generators'
-gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
-gem "ixtlan-core", '~> 0.7.5' #, :path => '../../ixtlan/ixtlan-core'
-gem "ixtlan-session-timeout"
-gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
-gem "jruby-openssl", "~> 0.8.2", :platforms => :jruby
-gem "enforce-ssl"
-gem "ixtlan-error-handler", "~> 0.2.0"
-gem "ixtlan-audit", "~> 0.2.1"
-gem 'ixtlan-babel', :path => '../../ixtlan/ixtlan-babel'
-
 group :development do
   gem 'dm-sqlite-adapter', DM_VERSION
 end
@@ -87,14 +62,24 @@ group :production do
 end
 
 gem 'gwt-rails', :path => '../../gwt/gwt-rails', :group => :development
+gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
 gem 'gettext_i18n_rails'
-gem "ixtlan-optimistic", :path => '../../ixtlan/ixtlan-optimistic'
 
+gem "jruby-openssl", "~> 0.8.2", :platforms => :jruby
+gem "enforce-ssl"
+
+gem "ixtlan-core", '~> 0.7.5' #, :path => '../../ixtlan/ixtlan-core'
+gem "ixtlan-session-timeout"
+gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
+gem "ixtlan-error-handler", "~> 0.2.0"
+gem "ixtlan-audit", "~> 0.2.1"
+gem 'ixtlan-babel', :path => '../../ixtlan/ixtlan-babel'
+gem "ixtlan-optimistic", :path => '../../ixtlan/ixtlan-optimistic'
 gem 'ixtlan-remote', :path => '../../ixtlan/ixtlan-remote'
 gem 'ixtlan-gettext', :path => '../../ixtlan/ixtlan-gettext'
 gem 'rest-client', '1.6.7'
 
 gem 'virtus', '~> 0.5.0'
-gem 'backports', :platforms => :ruby_19
+gem 'backports', :platforms => :ruby_18
 
 gem 'copyright-header', '~> 1.0.7', :group => :development
