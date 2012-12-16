@@ -18,7 +18,7 @@ public class ManagedGinModule extends BaseModule {
         super.configure();
         bind(de.mkristian.ixtlan.rideboards.client.restservices.ErrorsRestService.class).toProvider(ErrorsRestServiceProvider.class);
         bind(de.mkristian.ixtlan.rideboards.client.restservices.AuditsRestService.class).toProvider(AuditsRestServiceProvider.class);
-        bind(de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationsRestService.class).toProvider(ConfigurationsRestServiceProvider.class);
+        bind(de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationRestService.class).toProvider(ConfigurationsRestServiceProvider.class);
         install(new GinFactoryModuleBuilder()
             .implement(Activity.class, Names.named("errors"), de.mkristian.ixtlan.rideboards.client.activities.ErrorActivity.class)
             .implement(Activity.class, Names.named("audits"), de.mkristian.ixtlan.rideboards.client.activities.AuditActivity.class)
@@ -28,9 +28,9 @@ public class ManagedGinModule extends BaseModule {
     }
 
     @Singleton
-    public static class ConfigurationsRestServiceProvider implements Provider<de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationsRestService> {
-        private final de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationsRestService service = GWT.create(de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationsRestService.class);
-        public de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationsRestService get() {
+    public static class ConfigurationsRestServiceProvider implements Provider<de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationRestService> {
+        private final de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationRestService service = GWT.create(de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationRestService.class);
+        public de.mkristian.ixtlan.rideboards.client.restservices.ConfigurationRestService get() {
             return service;
         }
     }

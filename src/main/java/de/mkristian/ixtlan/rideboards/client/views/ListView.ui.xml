@@ -3,9 +3,9 @@
   xmlns:ui="urn:ui:com.google.gwt.uibinder"
   xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-  <g:FlowPanel styleName="gwt-rails-display rideboard-errors">
+  <g:FlowPanel styleName="gwt-rails-display rideboards-list">
 
-    <g:Label>Errors</g:Label>
+    <g:Label ui:field="header"/>
 
     <g:FlowPanel styleName="gwt-rails-model-list">
       <g:FlexTable ui:field="list"/>

@@ -9,61 +9,38 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.mkristian.gwt.rails.places.RestfulActionEnum;
-import de.mkristian.gwt.rails.views.ModelButton;
+import de.mkristian.gwt.rails.places.RestfulAction;
+import de.mkristian.gwt.rails.views.ReadOnlyListViewImpl;
 import de.mkristian.ixtlan.rideboards.client.models.Audit;
 import de.mkristian.ixtlan.rideboards.client.places.AuditPlace;
 
 @Singleton
-public class AuditListViewImpl extends Composite implements AuditListView {
+public class AuditListViewImpl extends ReadOnlyListViewImpl<Audit>
+            implements AuditListView {
 
-    @UiTemplate("AuditListView.ui.xml")
-    interface Binder extends UiBinder<Widget, AuditListViewImpl> {}
+    @UiTemplate("ListView.ui.xml")
+    static interface Binder extends UiBinder<Widget, AuditListViewImpl> {}
 
-    private static Binder BINDER = GWT.create(Binder.class);
-
-    private final PlaceController places;
-
-    @UiField FlexTable list;
+    static private Binder BINDER = GWT.create(Binder.class);
 
     @Inject
-    public AuditListViewImpl(PlaceController places) {
-        this.places = places;
-        initWidget(BINDER.createAndBindUi(this));
+    public AuditListViewImpl( PlaceController places ) {
+        super( "Audits", places );
+        initWidget( BINDER.createAndBindUi( this ) );
     }
     
-    private final ClickHandler clickHandler = new ClickHandler() {
-        
-        @SuppressWarnings("unchecked")
-        public void onClick(ClickEvent event) {
-            ModelButton<Audit> button = (ModelButton<Audit>)event.getSource();
-            switch(button.action){
-                case SHOW:
-                    places.goTo( new AuditPlace( button.model, 
-                                         RestfulActionEnum.SHOW ) );
-                    break; 
-            }
-        }
-    };
- 
-    private Button newButton(RestfulActionEnum action, Audit model){
-        ModelButton<Audit> button = new ModelButton<Audit>(action, model);
-        button.addClickHandler(clickHandler);
-        return button;
-    }
-
     @Override
+    protected Place place(Audit model, RestfulAction action) {
+        return new AuditPlace( model,action );
+    }
+    
+    //@Override
     public void reset(List<Audit> models) {
         list.removeAllRows();
         list.setText(0, 0, "Id");

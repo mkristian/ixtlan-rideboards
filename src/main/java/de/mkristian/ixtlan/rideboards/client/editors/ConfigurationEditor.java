@@ -2,17 +2,20 @@ package de.mkristian.ixtlan.rideboards.client.editors;
 
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.DateLabel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
-import de.mkristian.gwt.rails.editors.UserLabel;
+import de.mkristian.gwt.rails.editors.EnabledEditor;
 import de.mkristian.gwt.rails.editors.IntegerBox;
+import de.mkristian.gwt.rails.editors.UserLabel;
 import de.mkristian.ixtlan.rideboards.client.models.Configuration;
 import de.mkristian.ixtlan.rideboards.client.models.User;
 
-public class ConfigurationEditor extends Composite implements Editor<Configuration>{
+public class ConfigurationEditor extends EnabledEditor<Configuration>{
     
     interface Binder extends UiBinder<Widget, ConfigurationEditor> {}
 
@@ -40,12 +43,8 @@ public class ConfigurationEditor extends Composite implements Editor<Configurati
         initWidget(BINDER.createAndBindUi(this));
     }
 
-    public void resetSignature() {
-        this.signature.setVisible(createdAt.getValue() != null);
-    }
-
     public void setEnabled(boolean enabled) {
-        resetSignature();
+        this.signature.setVisible(createdAt.getValue() != null);
         this.errorsKeepDumps.setEnabled(enabled);
         this.errorsBaseUrl.setEnabled(enabled);
         this.errorsFromEmail.setEnabled(enabled);

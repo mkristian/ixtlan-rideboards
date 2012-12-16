@@ -9,61 +9,38 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.mkristian.gwt.rails.places.RestfulActionEnum;
-import de.mkristian.gwt.rails.views.ModelButton;
+import de.mkristian.gwt.rails.places.RestfulAction;
+import de.mkristian.gwt.rails.views.ReadOnlyListViewImpl;
 import de.mkristian.ixtlan.rideboards.client.models.Error;
 import de.mkristian.ixtlan.rideboards.client.places.ErrorPlace;
 
+
 @Singleton
-public class ErrorListViewImpl extends Composite implements ErrorListView {
+public class ErrorListViewImpl extends ReadOnlyListViewImpl<Error> 
+            implements ErrorListView {
 
-    @UiTemplate("ErrorListView.ui.xml")
-    interface Binder extends UiBinder<Widget, ErrorListViewImpl> {}
+    @UiTemplate("ListView.ui.xml")
+    static interface Binder extends UiBinder<Widget, ErrorListViewImpl> {}
 
-    private static Binder BINDER = GWT.create(Binder.class);
-
-    private final PlaceController places;
-
-    @UiField FlexTable list;
+    static private Binder BINDER = GWT.create(Binder.class);
 
     @Inject
-    public ErrorListViewImpl(PlaceController places) {
-        this.places = places;
-        initWidget(BINDER.createAndBindUi(this));
-    }
-
-    private final ClickHandler clickHandler = new ClickHandler() {
-        
-        @SuppressWarnings("unchecked")
-        public void onClick(ClickEvent event) {
-            ModelButton<Error> button = (ModelButton<Error>)event.getSource();
-            switch(button.action){
-                case SHOW:
-                    places.goTo( new ErrorPlace( button.model.id, 
-                            RestfulActionEnum.SHOW ) );
-                    break; 
-            }
-        }
-    };
- 
-    private Button newButton(RestfulActionEnum action, Error model){
-        ModelButton<Error> button = new ModelButton<Error>(action, model);
-        button.addClickHandler(clickHandler);
-        return button;
+    public ErrorListViewImpl( PlaceController places ) {
+        super( "Errors", places );
+        initWidget( BINDER.createAndBindUi( this ) );
     }
 
     @Override
+    protected Place place(Error model, RestfulAction action) {
+        return new ErrorPlace( model, action );
+    }
+    //@Override
     public void reset(List<Error> models) {
         list.removeAllRows();
         list.setText(0, 0, "Id");
@@ -96,4 +73,5 @@ public class ErrorListViewImpl extends Composite implements ErrorListView {
 
         list.setWidget(row, 8, newButton(SHOW, model));
     }
+
 }

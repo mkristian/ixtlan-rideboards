@@ -1,52 +1,34 @@
 package de.mkristian.ixtlan.rideboards.client.activities;
 
-
-import com.google.gwt.activity.shared.AbstractActivity;
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
+import de.mkristian.gwt.rails.activities.AbstractSingletonActivity;
+import de.mkristian.gwt.rails.events.ModelEventHandler;
 import de.mkristian.gwt.rails.places.RestfulActionEnum;
+import de.mkristian.gwt.rails.places.RestfulPlace;
+import de.mkristian.ixtlan.rideboards.client.events.ConfigurationEvent;
+import de.mkristian.ixtlan.rideboards.client.models.Configuration;
 import de.mkristian.ixtlan.rideboards.client.places.ConfigurationPlace;
 import de.mkristian.ixtlan.rideboards.client.presenters.ConfigurationPresenter;
 
-public class ConfigurationActivity extends AbstractActivity {
+public class ConfigurationActivity extends AbstractSingletonActivity<Configuration> {
 
-    private final ConfigurationPlace place;
-    private final ConfigurationPresenter presenter;
-    
     @Inject
-    public ConfigurationActivity(@Assisted ConfigurationPlace place,
-                ConfigurationPresenter presenter) {
-        this.place = place;
-        this.presenter = presenter;
+    public ConfigurationActivity( @Assisted ConfigurationPlace place,
+                ConfigurationPresenter presenter,
+                PlaceController places ) {
+        super( place, presenter, places );
     }
 
-    public void start(AcceptsOneWidget display, EventBus eventBus) {
-        presenter.init( display );
-        switch( RestfulActionEnum.valueOf( place.action ) ){
-            case EDIT:
-                presenter.edit();
-                break;
-            case SHOW:
-                if ( place.model != null ){
-                    presenter.show( place.model );
-                }
-                else {
-                    presenter.show();
-                }
-                break;
-        }
+    protected Type<ModelEventHandler<Configuration>> eventType() {
+        return ConfigurationEvent.TYPE;
     }
 
     @Override
-    public String mayStop() {
-        if (presenter.isDirty()){
-            return "there are unsaved data.";
-        }
-        else {
-            return null;
-        }
+    protected RestfulPlace<Configuration, ?> showPlace(Configuration model) {
+        return new ConfigurationPlace( model, RestfulActionEnum.SHOW );
     }
 }

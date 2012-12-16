@@ -2,15 +2,19 @@ package de.mkristian.ixtlan.rideboards.client.editors;
 
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.DateLabel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.NumberLabel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
+import de.mkristian.gwt.rails.editors.IdentifiableEditor;
 import de.mkristian.ixtlan.rideboards.client.models.Audit;
 
 
-public class AuditEditor extends Composite implements Editor<Audit>{
+public class AuditEditor extends IdentifiableEditor<Audit>{
     
     interface Binder extends UiBinder<Widget, AuditEditor> {}
 
@@ -29,13 +33,14 @@ public class AuditEditor extends Composite implements Editor<Audit>{
         initWidget(BINDER.createAndBindUi(this));
     }
 
-    public void resetSignature() {
-        this.signature.setVisible(id.getValue() != null && id.getValue() > 0);
-    }
-
     public void setEnabled(boolean enabled) {
-        resetSignature();
+        this.signature.setVisible(id.getValue() != null && id.getValue() > 0);
         this.login.setEnabled(enabled);
         this.message.setEnabled(enabled);
+    }
+
+    @Override
+    public int getId() {
+        return id.getValue();
     }
 }

@@ -11,10 +11,10 @@ import de.mkristian.gwt.rails.ErrorHandlerWithDisplay;
 import de.mkristian.gwt.rails.Notice;
 
 @Singleton
-public class RideboardErrorHandler extends ErrorHandlerWithDisplay {
+public class RideboardsErrorHandler extends ErrorHandlerWithDisplay {
 
     @Inject
-    public RideboardErrorHandler(Notice notice) {
+    public RideboardsErrorHandler(Notice notice) {
         super(notice);
     }
 
