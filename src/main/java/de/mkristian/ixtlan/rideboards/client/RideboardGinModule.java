@@ -33,7 +33,7 @@ public class RideboardGinModule extends ManagedGinModule {
         bind(ActivityMapper.class).to(SessionActivityPlaceActivityMapper.class).in(Singleton.class);
         bind(Delegate.class).to(RideboardConfirmation.class);
         bind(LoginView.class).to(LoginViewImpl.class);
-        bind(RideboardConfirmation.class);
+       // bind(RideboardConfirmation.class);
     }
 
 }

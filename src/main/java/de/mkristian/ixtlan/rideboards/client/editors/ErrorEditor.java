@@ -10,11 +10,11 @@ import com.google.gwt.user.client.ui.NumberLabel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.mkristian.gwt.rails.editors.IdentifiableEditor;
+import de.mkristian.gwt.rails.editors.EnabledEditor;
 import de.mkristian.ixtlan.rideboards.client.models.Error;
 
 
-public class ErrorEditor extends IdentifiableEditor<Error>{
+public class ErrorEditor extends EnabledEditor<Error>{
     
     interface Binder extends UiBinder<Widget, ErrorEditor> {}
 
@@ -53,10 +53,5 @@ public class ErrorEditor extends IdentifiableEditor<Error>{
         this.parameters.setEnabled(enabled);
         this.clazz.setEnabled(enabled);
         this.backtrace.setEnabled(enabled);
-    }
-
-    @Override
-    public int getId() {
-        return id.getValue();
     }
 }
