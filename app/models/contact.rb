@@ -15,17 +15,7 @@ class Contact
     @listing = listing
   end
 
-  def send_message(lang)
-    if valid?
-      message = Mailer.contact(lang, self)
-
-      # sent the message
-      message.deliver
-      
-      # finally extract the message content for displaying
-      # after clearing all the visual noise
-      message.encoded.gsub(/^[a-zA-Z\-]+: .*\n/, '').sub(/\s*charset=[a-zA-Z\-0-9]+.*\n/,'').sub(/\n/, '').strip
-
-    end
+  def send_message
+    Mailer.contact( self ) if valid?
   end
 end

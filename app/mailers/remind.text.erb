@@ -1,0 +1,20 @@
+<% require 'paragraph' -%>
+<%= _ 'Hello' %> <%= listing.name %>,
+
+<%= _ 'Here is your removal code' %>: <%= listing.password %>
+
+<%= _ 'To remove your listing, please enter this code at' %>:
+<%= board_url %>
+<% if listing.board.venue.password %>
+
+<%= _ 'The password to access the rideboard is' %>: <%= listing.board.venue.password %>
+<% end %>
+<%= _ 'If you have received this message without having requested it, it is because someone attempted to remove your listing from the' %> <%= listing.board.venue.fullname %> <%= _ 'Rideshare Board' %>. <%= _ 'It was mostly likely an innocent mistake, so you can safely disregard this message.' %>
+
+<%= _ 'With best wishes,' %>
+<%= listing.board.venue.fullname %> <%= _ 'Rideshare' %>
+<%= listing.board.venue.email %>
+
+--------------------------------------------------------------------------
+<%= Paragraph.format( _('This rideshare board is hosted and maintained by volunteers solely for the purpose of facilitating rides to Vipassana courses.').sub(/_VENUE_NAME_/, listing.board.venue.fullname) + ' ' +  _('It is available as a service to students who wish to participate.') + ' ' + _('We cannot guarantee a ride, and assume no responsibility whatsoever for the safety of participants or for any other issues arising as a result of participation.'), 60) %>
+--------------------------------------------------------------------------

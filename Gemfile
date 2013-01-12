@@ -1,31 +1,13 @@
 source 'https://rubygems.org'
 
-RAILS_VERSION = '~> 3.2.9'
+RAILS_VERSION = '~> 3.2.11'
 DM_VERSION    = '~> 1.2.0'
 
-gem 'activesupport',  RAILS_VERSION, :require => 'active_support'
-gem 'actionpack',     RAILS_VERSION, :require => 'action_pack'
 gem 'actionmailer',   RAILS_VERSION, :require => 'action_mailer'
-#gem 'activeresource', RAILS_VERSION, :require => 'active_resource'
 gem 'railties',       RAILS_VERSION, :require => 'rails'
 gem 'tzinfo',         '~> 0.3.32'
 
 gem 'dm-rails',               '~> 1.2.1'
-
-# You can use any of the other available database adapters.
-# This is only a small excerpt of the list of all available adapters
-# Have a look at
-#
-#  http://wiki.github.com/datamapper/dm-core/adapters
-#  http://wiki.github.com/datamapper/dm-core/community-plugins
-#
-# for a rather complete list of available datamapper adapters and plugins
-
-# gem 'dm-sqlite-adapter',    DM_VERSION
-# gem 'dm-mysql-adapter',     DM_VERSION
-# gem 'dm-postgres-adapter',  DM_VERSION
-# gem 'dm-oracle-adapter',    DM_VERSION
-# gem 'dm-sqlserver-adapter', DM_VERSION
 
 gem 'dm-migrations',   DM_VERSION
 gem 'dm-types',        DM_VERSION
@@ -35,18 +17,6 @@ gem 'dm-transactions', DM_VERSION
 gem 'dm-aggregates',   DM_VERSION
 gem 'dm-timestamps',   DM_VERSION
 gem 'dm-observer',     DM_VERSION
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.1'
-
-# Use unicorn as the web server
-# gem 'unicorn', '~> 4.2.1'
-
-# Deploy with Capistrano
-# gem 'capistrano', '~> 2.11.2'
-
-# To use debugger
-# gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output
@@ -61,25 +31,18 @@ group :production do
   gem 'dm-postgres-adapter', DM_VERSION
 end
 
-gem 'gwt-rails', :path => '../../gwt/gwt-rails', :group => :development
-gem "ruby-maven", '= 3.0.4.0.29.0', :group => :development
-gem 'gettext_i18n_rails'
-
-gem "jruby-openssl", "~> 0.8.2", :platforms => :jruby
-gem "enforce-ssl"
-
-gem "ixtlan-core", '~> 0.7.5' #, :path => '../../ixtlan/ixtlan-core'
 gem "ixtlan-session-timeout"
-gem "ixtlan-guard", '~> 0.8.3'#, :path => '../../ixtlan/ixtlan-guard'
-gem "ixtlan-error-handler", "~> 0.2.0"
-gem "ixtlan-audit", "~> 0.2.1"
-gem 'ixtlan-babel', :path => '../../ixtlan/ixtlan-babel'
-gem "ixtlan-optimistic", :path => '../../ixtlan/ixtlan-optimistic'
-gem 'ixtlan-remote', :path => '../../ixtlan/ixtlan-remote'
-gem 'ixtlan-gettext', :path => '../../ixtlan/ixtlan-gettext'
-gem 'rest-client', '1.6.7'
+gem "ixtlan-guard", '~> 0.9'#, :path => '../../ixtlan/ixtlan-guard'
+gem "ixtlan-error-handler", "~> 0.3"
+gem "ixtlan-audit", "~> 0.3"
+gem 'ixtlan-babel', '~> 0.2'#, :path => '../../ixtlan/ixtlan-babel'
+gem "ixtlan-optimistic", '~> 0.2.1'#, :path => '../../ixtlan/ixtlan-optimistic'
+gem 'ixtlan-remote','~> 0.1'#, :path => '../../ixtlan/ixtlan-remote'
+gem 'ixtlan-gettext','~> 0.1'#, :path => '../../ixtlan/ixtlan-gettext'
 
-gem 'virtus', '~> 0.5.0'
-gem 'backports', :platforms => :ruby_18
+gem 'slf4r', '~> 0.4.2'
+gem 'pony', '~> 1.4'
+gem 'gettext_i18n_rails'
+gem "enforce-ssl"
 
 gem 'copyright-header', '~> 1.0.7', :group => :development

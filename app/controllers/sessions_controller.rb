@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def create
     user = authenticator.login( *login_and_password )
-    if user      
+    if user
       current_user( user )
       @session = serializer( Session.new( 'user' => user,
                                           'idle_session_timeout' => Rideboards::Application.config.idle_session_timeout,

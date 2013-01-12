@@ -23,3 +23,15 @@ Rideboards::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
 end
+class MailDump
+    def initialize(values)
+      @settings = {}
+    end
+    
+    attr_accessor :settings
+
+    def deliver!(mail)
+      puts mail.to_s
+    end
+end
+Pony.options = { :via => MailDump }

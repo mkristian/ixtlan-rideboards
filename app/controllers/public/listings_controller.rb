@@ -55,7 +55,7 @@ class Public::ListingsController < Public::ApplicationController
                     :lang => @lang, 
                     :controller => 'public/listings', 
                     :action => :edit)
-      listing.send_reminder(url, @lang)
+      listing.send_reminder( url )
       render :template => "public/reminder_sent"
     end
   end
@@ -72,7 +72,7 @@ class Public::ListingsController < Public::ApplicationController
                       :lang => @lang, 
                       :controller => 'public/boards', 
                       :action => :show)
-        @listing.send_confirmation(url, @lang)
+        @listing.send_confirmation( url )
         render :template => "public/created"
       else
         render :template => "public/new"
@@ -110,7 +110,7 @@ class Public::ListingsController < Public::ApplicationController
   def contact
     if listing
       @contact = listing.new_contact(params[:contact])
-      if @message = @contact.send_message(@lang)
+      if @message = @contact.send_message
         render :template => "public/sent" 
       else
         render :template => "public/contact"

@@ -5,7 +5,6 @@ require File.expand_path('../boot', __FILE__)
 # config/environments/development.rb and config/environments/test.rb files):
 require 'action_controller/railtie'
 require 'dm-rails/railtie'
-require 'action_mailer/railtie'
 require 'rails/test_unit/railtie'
 
 ENV['TZ'] = 'UTC'

@@ -30,22 +30,22 @@ class Listing
     end
   end
 
-  def send_confirmation(base_url, lang)
+  def send_confirmation( base_url )
     url = board.venue.iframe_url
     if url.blank? 
       url = base_url
     end
       
-    Mailer.confirm(lang, self, url).deliver
+    Mailer.confirm( self, url )
   end
 
-  def send_reminder(base_url, lang)
+  def send_reminder( base_url )
     url = board.venue.iframe_url
     if url.blank? 
       url = base_url
     end
       
-    Mailer.remind(lang, self, url).deliver
+    Mailer.remind( self, url )
   end
 
   def reset_password
