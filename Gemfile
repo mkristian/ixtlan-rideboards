@@ -43,6 +43,7 @@ gem 'ixtlan-gettext','~> 0.1'#, :path => '../../ixtlan/ixtlan-gettext'
 gem 'slf4r', '~> 0.4.2'
 gem 'pony', '~> 1.4'
 gem 'gettext_i18n_rails'
-gem "enforce-ssl"
+gem 'enforce-ssl'
+gem 'cuba-api', '~> 0.1'
 
 gem 'copyright-header', '~> 1.0.7', :group => :development
