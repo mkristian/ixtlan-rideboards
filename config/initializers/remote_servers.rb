@@ -18,7 +18,7 @@ Rideboards::Application.config.rest.server( :gettext ) do |server|
 
   server.add_model( Locale )
   server.add_model( Ixtlan::Gettext::Translation, config[:translations_path] || "translations/uncommitted" )
-  server.add_model( Ixtlan::Gettext::TranslationKey, :translation_keys )
+  server.add_model( Ixtlan::Gettext::TranslationKey, config[:translations_path] || "translation_keys/uncommitted" )
 end
 
 Rideboards::Application.config.rest.server( :local ) do |server|
