@@ -2,8 +2,6 @@ require 'ixtlan/babel/serializer'
 
 class ConfigurationSerializer < Ixtlan::Babel::Serializer
 
-  model Configuration
-
   root 'configuration'
 
   add_context(:single,
