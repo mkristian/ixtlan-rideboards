@@ -17,9 +17,9 @@ end
 namespace :update do
 
   desc 'update remote resources from gettext server'
-  task :gettext => [:environment] do
+  task :translations => [:environment] do
     sync = Updater.new
-    sync.do_it( Rideboards::Application.config.rest.server( :gettext ).models )
+    sync.do_it( Rideboards::Application.config.rest.server( :translations ).models )
 
     puts "#{Time.now.strftime('%Y-%m-%d %H:%M:%S')}\n\t#{sync}"
   end
