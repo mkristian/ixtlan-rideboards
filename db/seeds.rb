@@ -22,14 +22,15 @@ if c.new?
   c.save!
   p c if c.valid?
 end
-
-d = Domain.first
+Domain.ALL
+Domain.DEFAULT
+d = Domain.first( :name => 'test' )
 unless d
   d = Domain.create( :name => 'test', :updated_at => DateTime.new( 0 ) )
   p d if d.valid?
 end
 
-v = Venue.first
+v = Venue.first( :domain => d )
 unless v
   v = Venue.create(:fullname => 'Dhamma Test',
                                 :email => 'rides@test.dhamma.org',
@@ -44,7 +45,7 @@ unless en = Locale.get( 1 )
   p en if en.valid?
 end
 
-vc = VenueConfig.first 
+vc = VenueConfig.first( :venue => v )
 unless vc
   vc = VenueConfig.create(:venue => v,
                           :home_url => 'http://www.test.dhamma.org',
@@ -54,7 +55,7 @@ unless vc
   p vc if vc.valid?
 end
 
-b = Board.first
+b = Board.first( :venue => v )
 unless b
   b = Board.create(:name => 'center',
                    :fullname => 'Main Center',
@@ -65,7 +66,7 @@ unless b
   p b if b.valid?
 end
 
-bc = BoardConfig.first 
+bc = BoardConfig.first( :board => b )
 unless bc
   bc = BoardConfig.create(:locale => en,
                           :board => b,
