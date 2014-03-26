@@ -20,6 +20,21 @@
   <dependencies>
     <dependency>
       <groupId>rubygems</groupId>
+      <artifactId>railties</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>actionpack</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>activemodel</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
       <artifactId>activesupport</artifactId>
       <type>gem</type>
     </dependency>
@@ -31,16 +46,6 @@
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>multi_json</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>actionpack</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>activemodel</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -86,36 +91,6 @@
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>tilt</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>actionmailer</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>mail</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>mime-types</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>treetop</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>polyglot</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>railties</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -215,67 +190,12 @@
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
-      <artifactId>dm-aggregates</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
       <artifactId>dm-timestamps</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
-      <artifactId>dm-observer</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>gettext_i18n_rails</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>fast_gettext</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>jruby-openssl</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>bouncy-castle-java</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>enforce-ssl</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>ixtlan-core</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>ixtlan-session-timeout</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>ixtlan-guard</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>ixtlan-error-handler</artifactId>
-      <type>gem</type>
-    </dependency>
-    <dependency>
-      <groupId>rubygems</groupId>
-      <artifactId>slf4r</artifactId>
+      <artifactId>dm-aggregates</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -285,7 +205,22 @@
     </dependency>
     <dependency>
       <groupId>rubygems</groupId>
-      <artifactId>rest-client</artifactId>
+      <artifactId>slf4r</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-babel</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-error-handler</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-guard</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -296,6 +231,81 @@
     <dependency>
       <groupId>rubygems</groupId>
       <artifactId>backports</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-gettext</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>fast_gettext</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-remote</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>rest-client</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>mime-types</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-optimistic</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>ixtlan-session-timeout</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>pony</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>mail</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>treetop</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>polyglot</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>enforce-ssl</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>cuba-api</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>cuba</artifactId>
+      <type>gem</type>
+    </dependency>
+    <dependency>
+      <groupId>rubygems</groupId>
+      <artifactId>gettext_i18n_rails</artifactId>
       <type>gem</type>
     </dependency>
     <dependency>
@@ -370,92 +380,20 @@
     <dependencies>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>gwt-rails</artifactId>
-        <version>0.1.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ruby-maven</artifactId>
-        <version>3.0.4.0.29.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>maven-tools</artifactId>
-        <version>0.29.3</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>thor</artifactId>
-        <version>0.14.6</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ixtlan-babel</artifactId>
-        <version>0.1.2</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ixtlan-gettext</artifactId>
-        <version>0.1.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>fast_gettext</artifactId>
-        <version>0.6.8</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ixtlan-remote</artifactId>
-        <version>0.1.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>rest-client</artifactId>
-        <version>1.6.7</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>mime-types</artifactId>
-        <version>1.19</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>ixtlan-optimistic</artifactId>
-        <version>0.2.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>actionmailer</artifactId>
-        <version>3.2.9</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>actionpack</artifactId>
-        <version>3.2.9</version>
+        <version>3.2.11</version>
         <type>gem</type>
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>activemodel</artifactId>
-        <version>3.2.9</version>
+        <version>3.2.11</version>
         <type>gem</type>
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>activesupport</artifactId>
-        <version>3.2.9</version>
+        <version>3.2.11</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -491,7 +429,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>rack</artifactId>
-        <version>1.4.1</version>
+        <version>1.4.3</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -526,24 +464,6 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>mail</artifactId>
-        <version>2.4.4</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>treetop</artifactId>
-        <version>1.4.12</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
-        <artifactId>polyglot</artifactId>
-        <version>0.3.3</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>addressable</artifactId>
         <version>2.2.8</version>
         <type>gem</type>
@@ -568,14 +488,26 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>bouncy-castle-java</artifactId>
-        <version>1.5.0146.1</version>
+        <artifactId>copyright-header</artifactId>
+        <version>1.0.7</version>
         <type>gem</type>
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>copyright-header</artifactId>
-        <version>1.0.7</version>
+        <artifactId>cuba</artifactId>
+        <version>3.1.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>cuba-api</artifactId>
+        <version>0.1.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-babel</artifactId>
+        <version>0.2.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -622,12 +554,6 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>dm-observer</artifactId>
-        <version>1.2.0</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>dm-postgres-adapter</artifactId>
         <version>1.2.0</version>
         <type>gem</type>
@@ -659,7 +585,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>railties</artifactId>
-        <version>3.2.9</version>
+        <version>3.2.11</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -671,7 +597,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>rake</artifactId>
-        <version>10.0.2</version>
+        <version>10.0.3</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -684,6 +610,12 @@
         <groupId>rubygems</groupId>
         <artifactId>json</artifactId>
         <version>1.6.7</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>thor</artifactId>
+        <version>0.14.6</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -754,6 +686,12 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
+        <artifactId>fast_gettext</artifactId>
+        <version>0.7.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
         <artifactId>gettext_i18n_rails</artifactId>
         <version>0.6.6</version>
         <type>gem</type>
@@ -761,7 +699,7 @@
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>ixtlan-audit</artifactId>
-        <version>0.2.1</version>
+        <version>0.3.2</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -772,20 +710,50 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>ixtlan-core</artifactId>
-        <version>0.7.5</version>
+        <artifactId>ixtlan-error-handler</artifactId>
+        <version>0.3.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>ixtlan-error-handler</artifactId>
-        <version>0.2.0</version>
+        <artifactId>ixtlan-gettext</artifactId>
+        <version>0.1.3</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-remote</artifactId>
+        <version>0.1.7</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>rest-client</artifactId>
+        <version>1.6.7</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>mime-types</artifactId>
+        <version>1.20.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
         <artifactId>ixtlan-guard</artifactId>
-        <version>0.8.3</version>
+        <version>0.9.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>virtus</artifactId>
+        <version>0.5.1</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ixtlan-optimistic</artifactId>
+        <version>0.2.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -796,8 +764,38 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>jruby-openssl</artifactId>
-        <version>0.8.2</version>
+        <artifactId>mail</artifactId>
+        <version>2.4.4</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>treetop</artifactId>
+        <version>1.4.12</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>polyglot</artifactId>
+        <version>0.3.3</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>maven-tools</artifactId>
+        <version>0.30.0</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>pony</artifactId>
+        <version>1.4</version>
+        <type>gem</type>
+      </dependency>
+      <dependency>
+        <groupId>rubygems</groupId>
+        <artifactId>ruby-maven</artifactId>
+        <version>3.0.4.1.1</version>
         <type>gem</type>
       </dependency>
       <dependency>
@@ -814,14 +812,8 @@
       </dependency>
       <dependency>
         <groupId>rubygems</groupId>
-        <artifactId>virtus</artifactId>
-        <version>0.5.1</version>
-        <type>gem</type>
-      </dependency>
-      <dependency>
-        <groupId>rubygems</groupId>
         <artifactId>bundler</artifactId>
-        <version>1.1.4</version>
+        <version>1.2.3</version>
         <type>gem</type>
       </dependency>
     </dependencies>
@@ -830,14 +822,51 @@
     <gem.home>${project.build.directory}/rubygems</gem.home>
     <gem.includeRubygemsInTestResources>false</gem.includeRubygemsInTestResources>
     <gem.path>${project.build.directory}/rubygems</gem.path>
-    <jetty.version>7.6.4.v20120524</jetty.version>
-    <jruby.plugins.version>0.29.0</jruby.plugins.version>
-    <jruby.version>1.6.7.2</jruby.version>
+    <jruby.plugins.version>0.29.2</jruby.plugins.version>
+    <jruby.version>1.7.2</jruby.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <rails.env>development</rails.env>
   </properties>
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>public</directory>
+            </resource>
+            <resource>
+              <directory>.</directory>
+              <includes>
+                <include>app/**</include>
+                <include>config/**</include>
+                <include>lib/**</include>
+                <include>vendor/**</include>
+                <include>Gemfile</include>
+              </includes>
+              <targetPath>WEB-INF</targetPath>
+            </resource>
+            <resource>
+              <directory>${gem.path}</directory>
+              <includes>
+                <include>gems/**</include>
+                <include>specifications/**</include>
+              </includes>
+              <targetPath>WEB-INF/gems</targetPath>
+            </resource>
+            <resource>
+              <directory>${gem.path}-bundler-maven-plugin</directory>
+              <includes>
+                <include>specifications/**</include>
+              </includes>
+              <targetPath>WEB-INF/gems</targetPath>
+            </resource>
+          </webResources>
+          <webXml>config/web.xml</webXml>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>de.saumya.mojo</groupId>
         <artifactId>bundler-maven-plugin</artifactId>
@@ -850,18 +879,6 @@
           </execution>
         </executions>
         <dependencies>
-          <dependency>
-            <groupId>rubygems</groupId>
-            <artifactId>turn</artifactId>
-            <version>[0.9.4,0.9.99999]</version>
-            <type>gem</type>
-          </dependency>
-          <dependency>
-            <groupId>rubygems</groupId>
-            <artifactId>ansi</artifactId>
-            <version>1.4.2</version>
-            <type>gem</type>
-          </dependency>
           <dependency>
             <groupId>rubygems</groupId>
             <artifactId>dm-sqlite-adapter</artifactId>
@@ -919,13 +936,13 @@
           <dependency>
             <groupId>rubygems</groupId>
             <artifactId>ruby-maven</artifactId>
-            <version>[3.0.4.0.29.0,3.0.4.0.29.0.0.0.0.0.1)</version>
+            <version>3.0.4.1.1</version>
             <type>gem</type>
           </dependency>
           <dependency>
             <groupId>rubygems</groupId>
             <artifactId>maven-tools</artifactId>
-            <version>0.29.3</version>
+            <version>0.30.0</version>
             <type>gem</type>
           </dependency>
           <dependency>
@@ -934,26 +951,19 @@
             <version>[1.0.7,1.0.99999]</version>
             <type>gem</type>
           </dependency>
+          <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>turn</artifactId>
+            <version>[0.9.4,0.9.99999]</version>
+            <type>gem</type>
+          </dependency>
+          <dependency>
+            <groupId>rubygems</groupId>
+            <artifactId>ansi</artifactId>
+            <version>1.4.2</version>
+            <type>gem</type>
+          </dependency>
         </dependencies>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.4.0</version>
-        <configuration>
-          <extraJvmArgs>-Xmx512m</extraJvmArgs>
-          <gen>${project.build.directory}/generated</gen>
-          <hostedWebapp>${basedir}/public</hostedWebapp>
-          <inplace>true</inplace>
-          <logLevel>INFO</logLevel>
-          <runTarget>Rideboard.html</runTarget>
-          <treeLogger>true</treeLogger>
-          <warSourceDirectory>${basedir}/public</warSourceDirectory>
-          <webXml>${basedir}/public/WEB-INF/web.xml</webXml>
-          <webappDirectory>${basedir}/public</webappDirectory>
-        </configuration>
-        <executions>
-        </executions>
       </plugin>
       <plugin>
         <groupId>de.saumya.mojo</groupId>
@@ -980,42 +990,23 @@
         </executions>
       </plugin>
       <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.2</version>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.4.0</version>
         <configuration>
-          <webResources>
-            <resource>
-              <directory>public</directory>
-            </resource>
-            <resource>
-              <directory>.</directory>
-              <includes>
-                <include>app/**</include>
-                <include>config/**</include>
-                <include>lib/**</include>
-                <include>vendor/**</include>
-                <include>Gemfile</include>
-              </includes>
-              <targetPath>WEB-INF</targetPath>
-            </resource>
-            <resource>
-              <directory>${gem.path}</directory>
-              <includes>
-                <include>gems/**</include>
-                <include>specifications/**</include>
-              </includes>
-              <targetPath>WEB-INF/gems</targetPath>
-            </resource>
-            <resource>
-              <directory>${gem.path}-bundler-maven-plugin</directory>
-              <includes>
-                <include>specifications/**</include>
-              </includes>
-              <targetPath>WEB-INF/gems</targetPath>
-            </resource>
-          </webResources>
-          <webXml>config/web.xml</webXml>
+          <extraJvmArgs>-Xmx512m</extraJvmArgs>
+          <gen>${project.build.directory}/generated</gen>
+          <hostedWebapp>${basedir}/public</hostedWebapp>
+          <inplace>true</inplace>
+          <logLevel>INFO</logLevel>
+          <runTarget>Rideboard.html</runTarget>
+          <treeLogger>true</treeLogger>
+          <warSourceDirectory>${basedir}/public</warSourceDirectory>
+          <webXml>${basedir}/public/WEB-INF/web.xml</webXml>
+          <webappDirectory>${basedir}/public</webappDirectory>
         </configuration>
+        <executions>
+        </executions>
       </plugin>
     </plugins>
     <pluginManagement>
@@ -1063,26 +1054,10 @@
   </build>
   <profiles>
     <profile>
-      <id>test</id>
+      <id>assets</id>
       <activation>
         <activeByDefault>true</activeByDefault>
-        <property>
-          <name>rails.env</name>
-          <value>test</value>
-        </property>
       </activation>
-      <dependencies>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>turn</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>ansi</artifactId>
-          <type>gem</type>
-        </dependency>
-      </dependencies>
     </profile>
     <profile>
       <id>development</id>
@@ -1093,43 +1068,22 @@
         <dependency>
           <groupId>rubygems</groupId>
           <artifactId>dm-sqlite-adapter</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>dm-do-adapter</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>data_objects</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>do_sqlite3</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>do_jdbc</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>jdbc-sqlite3</artifactId>
+          <version>[1.2.0,1.2.99999]</version>
           <type>gem</type>
         </dependency>
         <dependency>
           <groupId>rubygems</groupId>
           <artifactId>ruby-maven</artifactId>
-          <version>[3.0.4.0.29.0,3.0.4.0.29.0.0.0.0.0.1)</version>
+          <type>gem</type>
+        </dependency>
+        <dependency>
+          <groupId>rubygems</groupId>
+          <artifactId>maven-tools</artifactId>
           <type>gem</type>
         </dependency>
         <dependency>
           <groupId>rubygems</groupId>
           <artifactId>copyright-header</artifactId>
-          <version>[1.0.7,1.0.99999]</version>
           <type>gem</type>
         </dependency>
       </dependencies>
@@ -1150,6 +1104,25 @@
       </build>
     </profile>
     <profile>
+      <id>mac</id>
+      <activation>
+        <os>
+          <family>mac</family>
+        </os>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <configuration>
+              <extraJvmArgs>-d32 -XstartOnFirstThread -Xmx512m</extraJvmArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
       <id>production</id>
       <activation>
         <property>
@@ -1161,31 +1134,7 @@
         <dependency>
           <groupId>rubygems</groupId>
           <artifactId>dm-postgres-adapter</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>dm-do-adapter</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>data_objects</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>do_postgres</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>do_jdbc</artifactId>
-          <type>gem</type>
-        </dependency>
-        <dependency>
-          <groupId>rubygems</groupId>
-          <artifactId>jdbc-postgres</artifactId>
+          <version>[1.2.0,1.2.99999]</version>
           <type>gem</type>
         </dependency>
       </dependencies>
@@ -1212,136 +1161,26 @@
       </build>
     </profile>
     <profile>
-      <id>mac</id>
-      <activation>
-        <os>
-          <family>mac</family>
-        </os>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>gwt-maven-plugin</artifactId>
-            <configuration>
-              <extraJvmArgs>-d32 -XstartOnFirstThread -Xmx512m</extraJvmArgs>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>assets</id>
+      <id>test</id>
       <activation>
         <activeByDefault>true</activeByDefault>
+        <property>
+          <name>rails.env</name>
+          <value>test</value>
+        </property>
       </activation>
-    </profile>
-    <profile>
-      <id>war</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-maven-plugin</artifactId>
-            <version>${jetty.version}</version>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>run</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-maven-plugin</artifactId>
-            <version>${jetty.version}</version>
-            <configuration>
-              <connectors>
-                <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                  <port>8080</port>
-                </connector>
-                <connector implementation="org.eclipse.jetty.server.ssl.SslSelectChannelConnector">
-                  <port>8443</port>
-                  <keystore>${project.basedir}/src/test/resources/server.keystore</keystore>
-                  <keyPassword>123456</keyPassword>
-                  <password>123456</password>
-                </connector>
-              </connectors>
-              <systemProperties>
-                <systemProperty>
-                  <name>jbundle.skip</name>
-                  <value>true</value>
-                </systemProperty>
-              </systemProperties>
-              <webAppConfig>
-                <overrideDescriptor>${project.build.directory}/jetty/override-${rails.env}-web.xml</overrideDescriptor>
-              </webAppConfig>
-              <webXml>config/web.xml</webXml>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>warshell</id>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>kos</id>
-          <url>http://opensource.kantega.no/nexus/content/groups/public/</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.simplericity.jettyconsole</groupId>
-            <artifactId>jetty-console-maven-plugin</artifactId>
-            <version>1.42</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>createconsole</goal>
-                </goals>
-                <configuration>
-                <!--
-                                  see http://simplericity.com/2009/11/10/1257880778509.html for more info
-                -->
-                <!--
-		  <backgroundImage>${basedir}/src/main/jettyconsole/puffin.jpg</backgroundImage>
-		  <additionalDependencies>
-		    <additionalDependency>
-		      <artifactId>jetty-console-winsrv-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-requestlog-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-log4j-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-jettyxml-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-ajp-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-gzip-plugin</artifactId>
-		    </additionalDependency>
-		    <additionalDependency>
-		      <artifactId>jetty-console-startstop-plugin</artifactId>
-		    </additionalDependency>
-		  </additionalDependencies>
-
-                -->
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
+      <dependencies>
+        <dependency>
+          <groupId>rubygems</groupId>
+          <artifactId>turn</artifactId>
+          <type>gem</type>
+        </dependency>
+        <dependency>
+          <groupId>rubygems</groupId>
+          <artifactId>ansi</artifactId>
+          <type>gem</type>
+        </dependency>
+      </dependencies>
     </profile>
   </profiles>
 </project>

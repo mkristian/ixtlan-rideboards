@@ -13,7 +13,6 @@ import de.mkristian.gwt.rails.models.HasToDisplay;
 @Json(style = Style.RAILS)
 public class Configuration implements HasToDisplay {
 
-
   @Json(name = "created_at")
   private final Date createdAt;
 
